@@ -159,7 +159,7 @@ body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #f5f5f5; 
     </div>
     <div class="quick-row">
       <button class="qbtn" onclick="ask('jrsy','شادی کے لیے مرد کا اسٹائل؟')">شادی اسٹائل</button>
-      <button class="qbtn" onclick="ask('jrsy','UAE میں bulk order کی قیمت؟')">UAE Bulk</button>
+      <button class="qbtn" onclick="ask('jrsy','UAE میں bulk order؟')">UAE Bulk</button>
       <button class="qbtn" onclick="ask('jrsy','بچوں کے casual کپڑے؟')">بچوں کے کپڑے</button>
     </div>
     <div class="chat-box" id="chat-jrsy"><div class="bub ai">JRSY Style Assistant حاضر ہے!</div></div>
@@ -192,7 +192,6 @@ body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #f5f5f5; 
   </div>
 </div>
 <script>
-const KEY = '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';
 const SYS = {
   pharmacy: 'آپ Al-Shifa Pharmacy کے AI اسسٹنٹ ہیں۔ اردو میں مختصر جواب دیں۔ Panadol، Brufen، Augmentin، ORS، Septran دستیاب ہیں۔ آخر میں ڈاکٹر کے مشورے کی یاد دہانی کریں۔',
   urdu: 'آپ ایک دوستانہ AI استاد ہیں جو اردو میں AI سکھاتے ہیں۔ آسان اردو میں ٣-٤ جملوں میں جواب دیں۔',
@@ -220,10 +219,10 @@ async function send(id) {
   const t=addB(box,'جواب آ رہا ہے...','typing');
   H[id].push({role:'user',content:msg});
   try {
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
+    const res=await fetch('/api/chat',{
       method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':KEY,'anthropic-version':'2023-06-01'},
-      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:500,system:SYS[id],messages:H[id]})
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({system:SYS[id],messages:H[id]})
     });
     const data=await res.json();
     const reply=data.content?.[0]?.text||'معذرت، دوبارہ کوشش کریں۔';
