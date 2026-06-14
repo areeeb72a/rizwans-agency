@@ -7,11 +7,8 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #f5f5f5; color: #1a1a1a; }
-
 .top-bar { background: #1a1a1a; color: white; text-align: center; padding: 10px; font-size: 12px; letter-spacing: 2px; direction: ltr; }
-
 .container { max-width: 920px; margin: 0 auto; padding: 2rem 1rem; }
-
 .hero { text-align: center; padding: 3rem 1rem; background: white; border-radius: 16px; margin-bottom: 2rem; border: 1px solid #e8e8e8; }
 .hero-tag { font-size: 11px; letter-spacing: 4px; color: #aaa; margin-bottom: 12px; direction: ltr; }
 .hero-brand { font-size: 38px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; direction: ltr; }
@@ -20,15 +17,12 @@ body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #f5f5f5; 
 .hero-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
 .stat-num { font-size: 30px; font-weight: 700; color: #1a1a1a; direction: ltr; }
 .stat-lbl { font-size: 12px; color: #aaa; margin-top: 4px; direction: ltr; }
-
 .sec-label { font-size: 11px; letter-spacing: 3px; color: #aaa; margin-bottom: 14px; direction: ltr; }
-
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 2rem; }
 .service-card { background: white; border: 1px solid #e8e8e8; border-radius: 14px; padding: 1.25rem; text-align: center; }
 .service-icon { font-size: 30px; margin-bottom: 10px; }
 .service-name { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; direction: ltr; }
 .service-desc { font-size: 12px; color: #999; line-height: 1.6; }
-
 .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px; margin-bottom: 2rem; }
 .product-card { background: white; border: 1px solid #e8e8e8; border-radius: 16px; padding: 1.5rem; cursor: pointer; transition: all 0.2s; }
 .product-card:hover { border-color: #1a1a1a; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
@@ -41,32 +35,25 @@ body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #f5f5f5; 
 .p-desc { font-size: 13px; color: #777; line-height: 1.7; margin-bottom: 14px; }
 .p-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
 .tag { font-size: 11px; padding: 3px 10px; border-radius: 12px; background: #f5f5f5; color: #888; direction: ltr; }
-.demo-btn { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #e0e0e0; background: white; color: #1a1a1a; font-size: 14px; cursor: pointer; font-family: inherit; transition: background 0.15s; }
+.demo-btn { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #e0e0e0; background: white; color: #1a1a1a; font-size: 14px; cursor: pointer; font-family: inherit; }
 .demo-btn:hover { background: #f5f5f5; }
-
 .demo-panel { background: white; border: 1px solid #e8e8e8; border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; display: none; }
 .demo-panel.visible { display: block; }
 .demo-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
 .demo-title { font-size: 17px; font-weight: 600; color: #1a1a1a; direction: ltr; }
 .close-btn { background: #f5f5f5; border: none; cursor: pointer; color: #888; font-size: 18px; padding: 4px 10px; border-radius: 8px; }
-.close-btn:hover { background: #eee; }
-
 .quick-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
 .qbtn { padding: 6px 14px; border-radius: 16px; border: 1px solid #e0e0e0; background: #f9f9f9; color: #666; font-size: 13px; cursor: pointer; font-family: inherit; }
 .qbtn:hover { border-color: #1a1a1a; color: #1a1a1a; }
-
 .chat-box { background: #f9f9f9; border-radius: 12px; padding: 14px; min-height: 200px; max-height: 280px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
 .bub { padding: 10px 14px; border-radius: 12px; font-size: 14px; line-height: 1.7; max-width: 86%; }
 .bub.ai { background: white; color: #1a1a1a; align-self: flex-start; border: 1px solid #e8e8e8; border-bottom-left-radius: 4px; direction: rtl; }
 .bub.user { background: #1a1a1a; color: white; align-self: flex-end; border-bottom-right-radius: 4px; direction: rtl; }
 .bub.typing { background: white; color: #bbb; font-style: italic; align-self: flex-start; border: 1px solid #e8e8e8; direction: ltr; }
-
 .input-row { display: flex; gap: 8px; }
 .msg-input { flex: 1; padding: 11px 16px; border: 1px solid #e0e0e0; border-radius: 10px; font-size: 14px; font-family: inherit; color: #1a1a1a; direction: rtl; outline: none; }
 .msg-input:focus { border-color: #1a1a1a; }
-.send-btn { padding: 11px 20px; background: #1a1a1a; color: white; border: none; border-radius: 10px; font-size: 15px; cursor: pointer; direction: ltr; }
-.send-btn:hover { background: #333; }
-
+.send-btn { padding: 11px 20px; background: #1a1a1a; color: white; border: none; border-radius: 10px; font-size: 15px; cursor: pointer; }
 .contact-section { background: white; border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; border: 1px solid #e8e8e8; }
 .contact-title { font-size: 18px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
 .contact-sub { font-size: 14px; color: #888; margin-bottom: 1.25rem; }
@@ -75,14 +62,11 @@ body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #f5f5f5; 
 .contact-flag { font-size: 22px; margin-bottom: 6px; }
 .contact-country { font-size: 14px; font-weight: 600; color: #1a1a1a; direction: ltr; }
 .contact-num { font-size: 13px; color: #aaa; margin: 4px 0 12px; direction: ltr; }
-.wa-btn { display: block; text-align: center; padding: 9px; color: white; border-radius: 10px; font-size: 13px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; font-family: inherit; width: 100%; direction: ltr; }
+.wa-btn { display: block; text-align: center; padding: 9px; color: white; border-radius: 10px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; font-family: inherit; width: 100%; direction: ltr; }
 .wa-btn.green { background: #25D366; }
 .wa-btn.blue { background: #0a7cff; }
-.wa-btn:hover { opacity: 0.88; }
-
 .footer { text-align: center; padding: 1.5rem; border-top: 1px solid #e8e8e8; margin-top: 1rem; }
 .footer-txt { font-size: 12px; color: #ccc; direction: ltr; }
-
 @media (max-width: 600px) {
   .hero-brand { font-size: 28px; }
   .hero-stats { gap: 1.5rem; }
@@ -91,11 +75,8 @@ body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #f5f5f5; 
 </style>
 </head>
 <body>
-
 <div class="top-bar">RIZWAN'S AI AGENCY — KARACHI & UAE</div>
-
 <div class="container">
-
   <div class="hero">
     <div class="hero-tag">DIGITAL AI SOLUTIONS</div>
     <div class="hero-brand">Rizwan's AI Agency</div>
@@ -107,7 +88,6 @@ body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #f5f5f5; 
       <div class="stat"><div class="stat-num">5+</div><div class="stat-lbl">Happy Clients</div></div>
     </div>
   </div>
-
   <div class="sec-label">WHAT WE OFFER</div>
   <div class="services-grid">
     <div class="service-card"><div class="service-icon">🤖</div><div class="service-name">AI Chatbots</div><div class="service-desc">کاروبار کے لیے اردو AI چیٹ بوٹس</div></div>
@@ -115,13 +95,12 @@ body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #f5f5f5; 
     <div class="service-card"><div class="service-icon">🎓</div><div class="service-name">AI Training</div><div class="service-desc">اردو میں AI سیکھنے کے ٹولز</div></div>
     <div class="service-card"><div class="service-icon">🌐</div><div class="service-name">AI Web Tools</div><div class="service-desc">ویب سائٹ پر AI انٹیگریشن</div></div>
   </div>
-
   <div class="sec-label">LIVE AI PRODUCTS — DEMOS</div>
   <div class="products-grid">
     <div class="product-card" id="card-pharmacy" onclick="openDemo('pharmacy')">
       <div class="p-icon pharmacy">💊</div>
       <div class="p-name">Pharmacy AI</div>
-      <div class="p-desc">دوائی کی معلومات اور اسٹاک چیک — اردو میں فوری جواب</div>
+      <div class="p-desc">دوائی کی معلومات اور اسٹاک چیک — اردو میں</div>
       <div class="p-tags"><span class="tag">Urdu</span><span class="tag">Healthcare</span><span class="tag">Chatbot</span></div>
       <button class="demo-btn">▶ Live Demo چلائیں</button>
     </div>
@@ -140,7 +119,6 @@ body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #f5f5f5; 
       <button class="demo-btn">▶ Live Demo چلائیں</button>
     </div>
   </div>
-
   <div class="demo-panel" id="demo-pharmacy">
     <div class="demo-header">
       <div class="demo-title">💊 Pharmacy AI — Live Demo</div>
@@ -149,18 +127,15 @@ body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #f5f5f5; 
     <div class="quick-row">
       <button class="qbtn" onclick="ask('pharmacy','Panadol کے بارے میں بتائیں')">💊 Panadol</button>
       <button class="qbtn" onclick="ask('pharmacy','Augmentin دستیاب ہے؟')">📦 اسٹاک</button>
-      <button class="qbtn" onclick="ask('pharmacy','بخار کی دوائی کون سی ہے؟')">🌡️ بخار</button>
+      <button class="qbtn" onclick="ask('pharmacy','بخار کی دوائی؟')">🌡️ بخار</button>
       <button class="qbtn" onclick="ask('pharmacy','بچوں کی کھانسی کی دوائی؟')">👶 بچے</button>
     </div>
-    <div class="chat-box" id="chat-pharmacy">
-      <div class="bub ai">السلام علیکم! میں فارمیسی AI اسسٹنٹ ہوں۔ دوائی کا نام یا سوال پوچھیں۔</div>
-    </div>
+    <div class="chat-box" id="chat-pharmacy"><div class="bub ai">السلام علیکم! دوائی کا نام یا سوال پوچھیں۔</div></div>
     <div class="input-row">
-      <input class="msg-input" id="inp-pharmacy" placeholder="دوائی کا نام یا سوال لکھیں..." />
+      <input class="msg-input" id="inp-pharmacy" placeholder="دوائی کا نام لکھیں..." />
       <button class="send-btn" onclick="send('pharmacy')">↑</button>
     </div>
   </div>
-
   <div class="demo-panel" id="demo-urdu">
     <div class="demo-header">
       <div class="demo-title">🎓 AI Learning — Live Demo</div>
@@ -170,124 +145,98 @@ body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #f5f5f5; 
       <button class="qbtn" onclick="ask('urdu','AI کیا ہے آسان الفاظ میں؟')">AI کیا ہے؟</button>
       <button class="qbtn" onclick="ask('urdu','ChatGPT سے پیسے کیسے کمائیں؟')">ChatGPT income</button>
       <button class="qbtn" onclick="ask('urdu','Google Flow کیا ہے؟')">Google Flow</button>
-      <button class="qbtn" onclick="ask('urdu','AI سے ویڈیو کیسے بنائیں؟')">AI ویڈیو</button>
     </div>
-    <div class="chat-box" id="chat-urdu">
-      <div class="bub ai">السلام علیکم! میں AI استاد ہوں۔ AI کے بارے میں جو چاہیں پوچھیں — اردو میں جواب ملے گا۔</div>
-    </div>
+    <div class="chat-box" id="chat-urdu"><div class="bub ai">السلام علیکم! AI کے بارے میں جو چاہیں پوچھیں۔</div></div>
     <div class="input-row">
-      <input class="msg-input" id="inp-urdu" placeholder="AI کے بارے میں سوال لکھیں..." />
+      <input class="msg-input" id="inp-urdu" placeholder="AI کے بارے میں سوال..." />
       <button class="send-btn" onclick="send('urdu')">↑</button>
     </div>
   </div>
-
   <div class="demo-panel" id="demo-jrsy">
     <div class="demo-header">
       <div class="demo-title">👔 JRSY Style AI — Live Demo</div>
       <button class="close-btn" onclick="closeDemo()">✕</button>
     </div>
     <div class="quick-row">
-      <button class="qbtn" onclick="ask('jrsy','شادی کے لیے مرد کا بہترین اسٹائل؟')">شادی اسٹائل</button>
-      <button class="qbtn" onclick="ask('jrsy','UAE میں bulk order کی قیمت کیا ہے؟')">UAE Bulk</button>
-      <button class="qbtn" onclick="ask('jrsy','بچوں کے لیے casual کپڑے؟')">بچوں کے کپڑے</button>
+      <button class="qbtn" onclick="ask('jrsy','شادی کے لیے مرد کا اسٹائل؟')">شادی اسٹائل</button>
+      <button class="qbtn" onclick="ask('jrsy','UAE میں bulk order کی قیمت؟')">UAE Bulk</button>
+      <button class="qbtn" onclick="ask('jrsy','بچوں کے casual کپڑے؟')">بچوں کے کپڑے</button>
     </div>
-    <div class="chat-box" id="chat-jrsy">
-      <div class="bub ai">JRSY Style Assistant حاضر ہے! اسٹائل، آرڈر یا قیمت — جو چاہیں پوچھیں۔</div>
-    </div>
+    <div class="chat-box" id="chat-jrsy"><div class="bub ai">JRSY Style Assistant حاضر ہے!</div></div>
     <div class="input-row">
       <input class="msg-input" id="inp-jrsy" placeholder="اسٹائل یا آرڈر کے بارے میں..." />
       <button class="send-btn" onclick="send('jrsy')">↑</button>
     </div>
   </div>
-
   <div class="sec-label">CONTACT US</div>
   <div class="contact-section">
     <div class="contact-title">اپنے کاروبار کے لیے AI Tool بنوائیں</div>
-    <div class="contact-sub">Syed Rizwan Ahmed سے آج ہی رابطہ کریں — مفت مشاورت دستیاب ہے</div>
+    <div class="contact-sub">Syed Rizwan Ahmed سے آج ہی رابطہ کریں</div>
     <div class="contact-grid">
       <div class="contact-card">
         <div class="contact-flag">🇵🇰</div>
         <div class="contact-country">Karachi, Pakistan</div>
         <div class="contact-num">+92 333 776 1709</div>
-        <button class="wa-btn green" onclick="window.open('https://wa.me/923337761709?text='+encodeURIComponent('السلام علیکم Rizwan bhai! AI tool کے بارے میں بات کرنی ہے۔'),'_blank')">💬 WhatsApp Karachi</button>
+        <button class="wa-btn green" onclick="window.open('https://wa.me/923337761709?text='+encodeURIComponent('السلام علیکم! AI tool کے بارے میں بات کرنی ہے۔'),'_blank')">💬 WhatsApp Karachi</button>
       </div>
       <div class="contact-card">
         <div class="contact-flag">🇦🇪</div>
         <div class="contact-country">UAE Office</div>
         <div class="contact-num">+971 54 527 1033</div>
-        <button class="wa-btn blue" onclick="window.open('https://wa.me/971545271033?text='+encodeURIComponent('Hello! I want an AI solution for my business.'),'_blank')">💬 WhatsApp UAE</button>
+        <button class="wa-btn blue" onclick="window.open('https://wa.me/971545271033?text='+encodeURIComponent('Hello! I want an AI solution.'),'_blank')">💬 WhatsApp UAE</button>
       </div>
     </div>
   </div>
-
   <div class="footer">
     <div class="footer-txt">© 2025 Rizwan's AI Agency — Syed Rizwan Ahmed | Karachi & UAE</div>
   </div>
-
 </div>
-
 <script>
+const KEY = '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';
 const SYS = {
-  pharmacy: 'آپ Al-Shifa Pharmacy کے AI اسسٹنٹ ہیں۔ اردو میں مختصر جواب دیں۔ Panadol، Brufen، Augmentin، ORS، Septran دستیاب ہیں۔ آخر میں ڈاکٹر کے مشورے کی یاد دہانی ضرور کریں۔',
-  urdu: 'آپ ایک دوستانہ AI استاد ہیں جو بالغوں کو اردو میں AI سکھاتے ہیں۔ آسان اردو میں ٣-٤ جملوں میں جواب دیں۔ مثالیں دیں۔',
-  jrsy: 'آپ JRSY پاکستانی کلوتھنگ برانڈ کے AI اسٹائل اسسٹنٹ ہیں۔ اردو یا انگریزی میں جواب دیں۔ Karachi: +923337761709، UAE: +971545271033۔'
+  pharmacy: 'آپ Al-Shifa Pharmacy کے AI اسسٹنٹ ہیں۔ اردو میں مختصر جواب دیں۔ Panadol، Brufen، Augmentin، ORS، Septran دستیاب ہیں۔ آخر میں ڈاکٹر کے مشورے کی یاد دہانی کریں۔',
+  urdu: 'آپ ایک دوستانہ AI استاد ہیں جو اردو میں AI سکھاتے ہیں۔ آسان اردو میں ٣-٤ جملوں میں جواب دیں۔',
+  jrsy: 'آپ JRSY پاکستانی کلوتھنگ برانڈ کے AI اسسٹنٹ ہیں۔ اردو یا انگریزی میں جواب دیں۔ Karachi: +923337761709، UAE: +971545271033'
 };
 const H = { pharmacy: [], urdu: [], jrsy: [] };
-
 function openDemo(id) {
   document.querySelectorAll('.demo-panel').forEach(p => p.classList.remove('visible'));
   document.querySelectorAll('.product-card').forEach(c => c.classList.remove('active'));
-  document.getElementById('demo-' + id).classList.add('visible');
-  document.getElementById('card-' + id).classList.add('active');
-  setTimeout(() => document.getElementById('demo-' + id).scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  document.getElementById('demo-'+id).classList.add('visible');
+  document.getElementById('card-'+id).classList.add('active');
+  setTimeout(()=>document.getElementById('demo-'+id).scrollIntoView({behavior:'smooth',block:'start'}),100);
 }
-
 function closeDemo() {
-  document.querySelectorAll('.demo-panel').forEach(p => p.classList.remove('visible'));
-  document.querySelectorAll('.product-card').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.demo-panel').forEach(p=>p.classList.remove('visible'));
+  document.querySelectorAll('.product-card').forEach(c=>c.classList.remove('active'));
 }
-
-function ask(id, msg) {
-  document.getElementById('inp-' + id).value = msg;
-  send(id);
-}
-
+function ask(id,msg){document.getElementById('inp-'+id).value=msg;send(id);}
 async function send(id) {
-  const inp = document.getElementById('inp-' + id);
-  const msg = inp.value.trim(); if (!msg) return;
-  inp.value = '';
-  const box = document.getElementById('chat-' + id);
-  addBub(box, msg, 'user');
-  const t = addBub(box, 'جواب آ رہا ہے...', 'typing');
-  H[id].push({ role: 'user', content: msg });
+  const inp=document.getElementById('inp-'+id);
+  const msg=inp.value.trim();if(!msg)return;
+  inp.value='';
+  const box=document.getElementById('chat-'+id);
+  addB(box,msg,'user');
+  const t=addB(box,'جواب آ رہا ہے...','typing');
+  H[id].push({role:'user',content:msg});
   try {
-    const res = await fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ system: SYS[id], messages: H[id] })
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':KEY,'anthropic-version':'2023-06-01'},
+      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:500,system:SYS[id],messages:H[id]})
     });
-    const data = await res.json();
-    const reply = data.content?.[0]?.text || 'معذرت، دوبارہ کوشش کریں۔';
-    t.remove(); addBub(box, reply, 'ai');
-    H[id].push({ role: 'assistant', content: reply });
-  } catch(e) {
-    t.remove(); addBub(box, 'نیٹ ورک مسئلہ۔ دوبارہ کوشش کریں۔', 'ai');
-  }
+    const data=await res.json();
+    const reply=data.content?.[0]?.text||'معذرت، دوبارہ کوشش کریں۔';
+    t.remove();addB(box,reply,'ai');
+    H[id].push({role:'assistant',content:reply});
+  } catch(e){t.remove();addB(box,'نیٹ ورک مسئلہ۔','ai');}
 }
-
-function addBub(box, text, cls) {
-  const d = document.createElement('div');
-  d.className = 'bub ' + cls;
-  d.textContent = text;
-  box.appendChild(d);
-  box.scrollTop = box.scrollHeight;
-  return d;
+function addB(box,text,cls){
+  const d=document.createElement('div');d.className='bub '+cls;d.textContent=text;
+  box.appendChild(d);box.scrollTop=box.scrollHeight;return d;
 }
-
-['pharmacy','urdu','jrsy'].forEach(id => {
-  document.getElementById('inp-' + id).addEventListener('keydown', e => {
-    if (e.key === 'Enter') { e.preventDefault(); send(id); }
-  });
+['pharmacy','urdu','jrsy'].forEach(id=>{
+  document.getElementById('inp-'+id).addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();send(id);}});
 });
 </script>
 </body>
