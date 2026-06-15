@@ -675,7 +675,8 @@ async function runTool2(){
   try{
     const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
-        system:'آپ ایک ماہر فلم ڈائریکٹر ہیں۔ دیے گئے مکالموں یا کہانی کو ایک مکمل سینماٹک سین میں تبدیل کریں۔ کیمرہ اینگل، کرداروں کی حرکات، جذبات، اور ماحول کی تفصیل شامل کریں۔ اردو میں لکھیں۔ کوئی ## یا ** نشانات نہ لکھیں۔',
+        tool:'directors_cut',
+        system:'',
         messages:[{role:'user',content:story}]
       })
     });
