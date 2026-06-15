@@ -455,6 +455,77 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
     </div>
   </div>
 
+
+  <div class="divider"></div>
+
+  <!-- TOOLS -->
+  <div class="section">
+    <div class="sec-eye">OUR EXCLUSIVE TOOLS</div>
+    <div class="sec-title">Professional AI Tools</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;direction:ltr">
+
+      <!-- Tool 1: Commercial Director Pro -->
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.25s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="background:linear-gradient(135deg,#1a2a4a,#0e1622);padding:28px 24px 20px;text-align:center;position:relative;overflow:hidden">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#5b8dee,#a78bfa)"></div>
+          <div style="font-size:40px;margin-bottom:10px">🎬</div>
+          <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:4px">Commercial Director Pro</div>
+          <div style="font-size:11px;letter-spacing:2px;color:var(--accent2);font-weight:600">BY SYED RIZWAN AHMED</div>
+        </div>
+        <div style="padding:20px 24px">
+          <div style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;direction:rtl;font-family:Noto Nastaliq Urdu,serif">
+            TV اشتہار اور کمرشل کے لیے — ایجنسی جیسا سوچیں، فلم اسٹوڈیو جیسا بنائیں
+          </div>
+          <div style="font-size:12px;color:var(--text3);margin-bottom:16px;direction:ltr">
+            📌 Input: Brand name + Product + Model image (optional)
+          </div>
+          <div id="tool1-area">
+            <input id="t1-brand" style="width:100%;padding:9px 14px;border:1px solid var(--border2);border-radius:8px;font-size:13px;font-family:Inter,sans-serif;color:var(--text);background:rgba(0,0,0,0.2);margin-bottom:8px;outline:none;direction:ltr" placeholder="Brand name (e.g. ABABEEL Paint)"/>
+            <input id="t1-product" style="width:100%;padding:9px 14px;border:1px solid var(--border2);border-radius:8px;font-size:13px;font-family:Inter,sans-serif;color:var(--text);background:rgba(0,0,0,0.2);margin-bottom:12px;outline:none;direction:ltr" placeholder="Product (e.g. Premium Wall Paint)"/>
+            <button onclick="runTool1()" style="width:100%;padding:11px;border-radius:10px;background:linear-gradient(135deg,#3b6fd4,#5b8dee);color:white;border:none;font-size:14px;cursor:pointer;font-family:Inter,sans-serif;font-weight:700;letter-spacing:0.5px">
+              🎬 Generate Commercial Script
+            </button>
+          </div>
+          <div id="tool1-result" style="display:none;margin-top:14px;background:rgba(0,0,0,0.2);border:1px solid var(--border2);border-radius:10px;padding:14px;font-size:13px;color:var(--text);line-height:1.8;max-height:200px;overflow-y:auto;font-family:Noto Nastaliq Urdu,serif;direction:rtl"></div>
+          <div id="tool1-limit" style="display:none;margin-top:14px;text-align:center;padding:14px;background:rgba(240,180,41,0.08);border:1px solid rgba(240,180,41,0.2);border-radius:10px">
+            <div style="font-size:13px;color:var(--gold);margin-bottom:10px;font-family:Noto Nastaliq Urdu,serif">آپ کا مفت ٹرائل مکمل ہوا! مزید کے لیے رابطہ کریں</div>
+            <button onclick="window.open('https://wa.me/923341331972?text='+encodeURIComponent('السلام علیکم! Commercial Director Pro کا full access چاہیے'),'_blank')" style="padding:9px 20px;background:#25D366;color:white;border:none;border-radius:8px;font-size:13px;cursor:pointer;font-family:Inter,sans-serif;font-weight:700">💬 WhatsApp for Full Access</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tool 2: Director's Cut -->
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.25s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="background:linear-gradient(135deg,#2a1a3a,#1a0e28);padding:28px 24px 20px;text-align:center;position:relative;overflow:hidden">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#a78bfa,#f0b429)"></div>
+          <div style="font-size:40px;margin-bottom:10px">🎭</div>
+          <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:4px">Director's Cut</div>
+          <div style="font-size:11px;letter-spacing:2px;color:#c4a0fa;font-weight:600">BY SYED RIZWAN AHMED</div>
+        </div>
+        <div style="padding:20px 24px">
+          <div style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;direction:rtl;font-family:Noto Nastaliq Urdu,serif">
+            فلم اور ڈرامہ کے سین کے لیے — چند مکالمے یا مختصر کہانی دیں، مکمل سین تیار ہو
+          </div>
+          <div style="font-size:12px;color:var(--text3);margin-bottom:16px;direction:ltr">
+            📌 Input: Few dialogues or short story idea
+          </div>
+          <div id="tool2-area">
+            <textarea id="t2-story" style="width:100%;padding:9px 14px;border:1px solid var(--border2);border-radius:8px;font-size:13px;font-family:Noto Nastaliq Urdu,serif;color:var(--text);background:rgba(0,0,0,0.2);margin-bottom:12px;outline:none;direction:rtl;resize:none;height:80px" placeholder="مکالمے یا کہانی لکھیں..."></textarea>
+            <button onclick="runTool2()" style="width:100%;padding:11px;border-radius:10px;background:linear-gradient(135deg,#6b21a8,#a78bfa);color:white;border:none;font-size:14px;cursor:pointer;font-family:Inter,sans-serif;font-weight:700;letter-spacing:0.5px">
+              🎭 Generate Scene
+            </button>
+          </div>
+          <div id="tool2-result" style="display:none;margin-top:14px;background:rgba(0,0,0,0.2);border:1px solid var(--border2);border-radius:10px;padding:14px;font-size:13px;color:var(--text);line-height:1.8;max-height:200px;overflow-y:auto;font-family:Noto Nastaliq Urdu,serif;direction:rtl"></div>
+          <div id="tool2-limit" style="display:none;margin-top:14px;text-align:center;padding:14px;background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:10px">
+            <div style="font-size:13px;color:#c4a0fa;margin-bottom:10px;font-family:Noto Nastaliq Urdu,serif">آپ کا مفت ٹرائل مکمل ہوا! مزید کے لیے رابطہ کریں</div>
+            <button onclick="window.open('https://wa.me/923341331972?text='+encodeURIComponent('السلام علیکم! Directors Cut tool ka full access chahiye'),'_blank')" style="padding:9px 20px;background:#25D366;color:white;border:none;border-radius:8px;font-size:13px;cursor:pointer;font-family:Inter,sans-serif;font-weight:700">💬 WhatsApp for Full Access</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <div class="divider"></div>
 
   <!-- CONTACT -->
@@ -547,6 +618,84 @@ function addB(box,text,cls){
 ['pharmacy','urdu','jrsy','kcf'].forEach(id=>{
   document.getElementById('inp-'+id).addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();send(id);}});
 });
+
+// Tool trial counts - in memory
+const trialCounts = {t1_count:0, t2_count:0};
+function getCount(key){ return trialCounts[key]||0; }
+function setCount(key,v){ trialCounts[key]=v; }
+
+async function runTool1(){
+  const brand = document.getElementById('t1-brand').value.trim();
+  const product = document.getElementById('t1-product').value.trim();
+  if(!brand||!product){alert('Brand name aur product dono likhein!');return;}
+  const count = getCount('t1_count');
+  if(count>=2){
+    document.getElementById('tool1-area').style.display='none';
+    document.getElementById('tool1-limit').style.display='block';
+    return;
+  }
+  const btn = event.target;
+  btn.textContent='⏳ Generating...';btn.disabled=true;
+  try{
+    const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        system:'آپ ایک ماہر TV کمرشل ڈائریکٹر ہیں۔ برانڈ اور پروڈکٹ کے لیے ایک مکمل 30 سیکنڈ کا TVC سکرپٹ اردو میں لکھیں۔ سین، ڈائیلاگ، موسیقی کی ہدایات شامل کریں۔ کوئی ## یا ** نشانات نہ لکھیں۔',
+        messages:[{role:'user',content:'Brand: '+brand+'
+Product: '+product+'
+ایک مکمل TVC سکرپٹ بنائیں'}]
+      })
+    });
+    const data=await res.json();
+    let reply=data.content?.[0]?.text||'دوبارہ کوشش کریں۔';
+    reply=reply.replace(/#{1,6}\s*/g,'').replace(/\*\*/g,'').replace(/\*/g,'').trim();
+    document.getElementById('tool1-result').style.display='block';
+    document.getElementById('tool1-result').textContent=reply;
+    setCount('t1_count', count+1);
+    if(count+1>=2){
+      setTimeout(()=>{
+        document.getElementById('tool1-area').style.display='none';
+        document.getElementById('tool1-limit').style.display='block';
+      },3000);
+    }
+  }catch(e){alert('نیٹ ورک مسئلہ۔');}
+  btn.textContent='🎬 Generate Commercial Script';btn.disabled=false;
+}
+
+async function runTool2(){
+  const story = document.getElementById('t2-story').value.trim();
+  if(!story){alert('کہانی یا مکالمے لکھیں!');return;}
+  const count = getCount('t2_count');
+  if(count>=2){
+    document.getElementById('tool2-area').style.display='none';
+    document.getElementById('tool2-limit').style.display='block';
+    return;
+  }
+  const btn = event.target;
+  btn.textContent='⏳ Generating...';btn.disabled=true;
+  try{
+    const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        system:'آپ ایک ماہر فلم ڈائریکٹر ہیں۔ دیے گئے مکالموں یا کہانی کو ایک مکمل سینماٹک سین میں تبدیل کریں۔ کیمرہ اینگل، کرداروں کی حرکات، جذبات، اور ماحول کی تفصیل شامل کریں۔ اردو میں لکھیں۔ کوئی ## یا ** نشانات نہ لکھیں۔',
+        messages:[{role:'user',content:story}]
+      })
+    });
+    const data=await res.json();
+    let reply=data.content?.[0]?.text||'دوبارہ کوشش کریں۔';
+    reply=reply.replace(/#{1,6}\s*/g,'').replace(/\*\*/g,'').replace(/\*/g,'').trim();
+    document.getElementById('tool2-result').style.display='block';
+    document.getElementById('tool2-result').textContent=reply;
+    setCount('t2_count', count+1);
+    if(count+1>=2){
+      setTimeout(()=>{
+        document.getElementById('tool2-area').style.display='none';
+        document.getElementById('tool2-limit').style.display='block';
+      },3000);
+    }
+  }catch(e){alert('نیٹ ورک مسئلہ۔');}
+  btn.textContent='🎭 Generate Scene';btn.disabled=false;
+}
+
+// No load check needed for in-memory counts
 </script>
 </body>
 </html>
