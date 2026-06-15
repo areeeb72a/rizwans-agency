@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KCF Dost — آپ کا اپنا ساتھی</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Nastaliq Urdu',serif;background:#0a1a0f;color:#e8f5ee;min-height:100vh}
+.topbar{background:#051008;border-bottom:1px solid #1a3d22;text-align:center;padding:9px;font-size:11px;letter-spacing:2px;color:#4ade80;direction:ltr;font-family:'Inter',sans-serif}
+.hero{padding:50px 24px 40px;text-align:center;position:relative;background:radial-gradient(ellipse at 50% 0%,rgba(34,197,94,0.08) 0%,transparent 70%)}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#22c55e,transparent)}
+.hero-icon{font-size:56px;margin-bottom:16px;display:block}
+.hero-title{font-size:36px;font-weight:700;color:#fff;margin-bottom:10px}
+.hero-sub{font-size:15px;color:#86efac;line-height:1.8;margin-bottom:12px}
+.ayat{background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:14px;padding:16px 20px;margin:24px auto;max-width:600px;text-align:center}
+.ayat-text{font-size:16px;color:#86efac;line-height:1.9;font-weight:600}
+.ayat-ref{font-size:12px;color:#4ade80;margin-top:6px;font-family:'Inter',sans-serif}
+.container{max-width:700px;margin:0 auto;padding:0 20px 40px}
+
+/* NAAM */
+.naam-box{background:#0d1f12;border:1px solid #1a3d22;border-radius:18px;padding:28px;margin-bottom:24px;text-align:center}
+.naam-title{font-size:18px;color:#fff;font-weight:700;margin-bottom:8px}
+.naam-sub{font-size:13px;color:#6b8f72;margin-bottom:20px;font-family:'Inter',sans-serif}
+.naam-input{width:100%;padding:13px 18px;border:1px solid #1a3d22;border-radius:12px;font-size:15px;font-family:'Noto Nastaliq Urdu',serif;color:#e8f5ee;direction:rtl;outline:none;background:#0a1a0f;margin-bottom:14px;transition:border-color 0.2s}
+.naam-input:focus{border-color:#22c55e}
+.naam-input::placeholder{color:#3d5c45}
+.gender-row{display:flex;gap:10px;margin-bottom:16px}
+.gbtn{flex:1;padding:11px;border-radius:10px;border:1px solid #1a3d22;background:#0a1a0f;color:#86efac;font-size:14px;cursor:pointer;font-family:'Noto Nastaliq Urdu',serif;transition:all 0.15s}
+.gbtn.sel{background:rgba(34,197,94,0.15);border-color:#22c55e;color:#fff;font-weight:600}
+.start-btn{width:100%;padding:14px;background:linear-gradient(135deg,#16a34a,#22c55e);color:#fff;border:none;border-radius:12px;font-size:16px;cursor:pointer;font-family:'Noto Nastaliq Urdu',serif;font-weight:700;transition:opacity 0.2s}
+.start-btn:hover{opacity:0.9}
+
+/* TOPICS */
+.topics{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px;display:none}
+.tbtn{background:#0d1f12;border:1px solid #1a3d22;border-radius:12px;padding:14px;text-align:center;cursor:pointer;transition:all 0.2s;font-family:'Noto Nastaliq Urdu',serif}
+.tbtn:hover{border-color:#22c55e;background:rgba(34,197,94,0.08)}
+.tbtn.sel{border:2px solid #22c55e;background:rgba(34,197,94,0.1)}
+.t-icon{font-size:24px;margin-bottom:6px}
+.t-name{font-size:14px;font-weight:700;color:#fff}
+.t-desc{font-size:11px;color:#6b8f72;margin-top:3px;font-family:'Inter',sans-serif}
+
+/* CHAT */
+.chat-box-wrap{background:#0d1f12;border:1px solid #1a3d22;border-radius:18px;padding:20px;display:none}
+.chat-label{font-size:13px;color:#6b8f72;margin-bottom:12px;text-align:center;font-family:'Inter',sans-serif}
+.qrow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.qbtn{padding:7px 14px;border-radius:20px;border:1px solid rgba(34,197,94,0.3);background:rgba(34,197,94,0.06);color:#86efac;font-size:12px;cursor:pointer;font-family:'Noto Nastaliq Urdu',serif;transition:all 0.15s;font-weight:600}
+.qbtn:hover{background:rgba(34,197,94,0.15);border-color:#22c55e}
+.chatbox{background:rgba(0,0,0,0.2);border-radius:12px;padding:14px;min-height:240px;max-height:340px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;margin-bottom:14px;border:1px solid #1a3d22}
+.bub{padding:12px 16px;border-radius:14px;font-size:14px;line-height:1.9;max-width:88%}
+.bub.ai{background:#0a1a0f;color:#e8f5ee;align-self:flex-start;border:1px solid #1a3d22;border-bottom-left-radius:4px}
+.bub.user{background:linear-gradient(135deg,rgba(34,197,94,0.25),rgba(34,197,94,0.1));color:#fff;align-self:flex-end;border-bottom-right-radius:4px;border:1px solid rgba(34,197,94,0.3)}
+.bub.typing{background:#0a1a0f;color:#3d5c45;font-style:italic;align-self:flex-start;border:1px solid #1a3d22;direction:ltr;font-family:'Inter',sans-serif;font-size:13px}
+.inrow{display:flex;gap:10px;margin-bottom:14px}
+.msgin{flex:1;padding:12px 18px;border:1px solid #1a3d22;border-radius:12px;font-size:14px;font-family:'Noto Nastaliq Urdu',serif;color:#e8f5ee;direction:rtl;outline:none;background:rgba(0,0,0,0.2);transition:border-color 0.2s}
+.msgin:focus{border-color:#22c55e}
+.msgin::placeholder{color:#3d5c45}
+.sndbtn{padding:12px 20px;background:linear-gradient(135deg,#16a34a,#22c55e);color:white;border:none;border-radius:12px;font-size:16px;cursor:pointer;flex-shrink:0}
+.share-row{display:flex;gap:10px}
+.sbtn{flex:1;padding:11px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:'Inter',sans-serif;color:white;transition:opacity 0.2s;letter-spacing:0.5px}
+.sbtn:hover{opacity:0.88}
+.sbtn.wa{background:#25D366}
+.sbtn.back{background:#1a3d22;color:#86efac}
+.chatbox::-webkit-scrollbar{width:4px}
+.chatbox::-webkit-scrollbar-thumb{background:#1a3d22;border-radius:2px}
+.footer{text-align:center;padding:20px;font-size:12px;color:#3d5c45;font-family:'Inter',sans-serif}
+</style>
+</head>
+<body>
+
+<div class="topbar">KCF DOST — KHOSKI COLONY FRIENDS WELFARE</div>
+
+<div class="hero">
+  <span class="hero-icon">💚</span>
+  <div class="hero-title">KCF Dost</div>
+  <div class="hero-sub">آپ اکیلے نہیں — یہاں آپ کی بات سنی جائے گی<br>ہر مشکل کا حل ہے، ہمت نہ ہاریں</div>
+  <div class="ayat">
+    <div class="ayat-text" id="ayat-text">بے شک مشکل کے ساتھ آسانی ہے</div>
+    <div class="ayat-ref" id="ayat-ref">— سورۃ الشرح: ٦</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="naam-box" id="naam-box">
+    <div class="naam-title">پہلے اپنا نام بتائیں 💚</div>
+    <div class="naam-sub">تاکہ آپ سے اپنائیت سے بات ہو سکے</div>
+    <input class="naam-input" id="naam-inp" placeholder="آپ کا نام لکھیں..." maxlength="30"/>
+    <div class="gender-row">
+      <button class="gbtn sel" id="g-bhai" onclick="setG('bhai',this)">👨 بھائی</button>
+      <button class="gbtn" id="g-behan" onclick="setG('behan',this)">👩 بہن</button>
+      <button class="gbtn" id="g-beta" onclick="setG('beta',this)">👦 بیٹا/بیٹی</button>
+    </div>
+    <button class="start-btn" onclick="startChat()">شروع کریں ←</button>
+  </div>
+
+  <div class="topics" id="topics">
+    <div class="tbtn sel" onclick="setT('rozi',this)"><div class="t-icon">💰</div><div class="t-name">روزی و پیسہ</div><div class="t-desc">نوکری، کاروبار</div></div>
+    <div class="tbtn" onclick="setT('sehat',this)"><div class="t-icon">🏥</div><div class="t-name">صحت</div><div class="t-desc">علاج، تندرستی</div></div>
+    <div class="tbtn" onclick="setT('parhai',this)"><div class="t-icon">📚</div><div class="t-name">پڑھائی</div><div class="t-desc">بچے، تعلیم</div></div>
+    <div class="tbtn" onclick="setT('rishte',this)"><div class="t-icon">❤️</div><div class="t-name">رشتے</div><div class="t-desc">گھر، خاندان</div></div>
+  </div>
+
+  <div class="chat-box-wrap" id="chat-wrap">
+    <div class="chat-label" id="chat-label">اپنا دل کھول کر بات کریں — یہاں کوئی جج نہیں کرتا</div>
+    <div class="qrow" id="qrow"></div>
+    <div class="chatbox" id="chatbox"></div>
+    <div class="inrow">
+      <input class="msgin" id="msgin" placeholder="یہاں لکھیں..."/>
+      <button class="sndbtn" onclick="sendMsg()">↑</button>
+    </div>
+    <div class="share-row">
+      <button class="sbtn wa" onclick="shareWA()">💬 KCF گروپ میں شیئر کریں</button>
+      <button class="sbtn back" onclick="window.location.href='/'">← واپس</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">KCF Dost — Rizwan's AI Agency | kcfwelfare.org</div>
+
+<script>
+let uName='', uGender='bhai', uTopic='rozi';
+let hist=[];
+
+const ayaat=[
+  {t:'بے شک مشکل کے ساتھ آسانی ہے',r:'— سورۃ الشرح: ٦'},
+  {t:'اللہ کسی جان پر اس کی طاقت سے زیادہ بوجھ نہیں ڈالتا',r:'— سورۃ البقرہ: ٢٨٦'},
+  {t:'بے شک اللہ کسی قوم کی حالت نہیں بدلتا جب تک وہ خود نہ بدلیں',r:'— سورۃ الرعد: ١١'},
+  {t:'اور جو اللہ پر بھروسہ رکھے، اللہ اس کے لیے کافی ہے',r:'— سورۃ الطلاق: ٣'}
+];
+
+const qqs={
+  rozi:['نوکری نہیں مل رہی','گھر چلانا مشکل ہے','کاروبار کرنا چاہتا ہوں','ہمت ٹوٹ گئی ہے'],
+  sehat:['دوائی کے پیسے نہیں','مفت علاج کہاں ملے؟','بہت تھکاوٹ رہتی ہے','صحت کارڈ کیسے بنے؟'],
+  parhai:['بچے کی فیس نہیں دے سکتا','اسکالرشپ کیسے ملے؟','بچہ پڑھنا نہیں چاہتا','خود پڑھنا چاہتا ہوں'],
+  rishte:['گھر میں لڑائی رہتی ہے','بہت تنہا محسوس ہوتا ہے','والدین ناراض ہیں','رشتوں میں تناؤ ہے']
+};
+
+const topicAyat={rozi:2,sehat:1,parhai:3,rishte:0};
+
+function setG(g,el){
+  uGender=g;
+  document.querySelectorAll('.gbtn').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+function getAddr(){
+  if(uGender==='bhai') return uName+' بھائی';
+  if(uGender==='behan') return uName+' بہن';
+  return uName+' بیٹا';
+}
+
+function startChat(){
+  const n=document.getElementById('naam-inp').value.trim();
+  if(!n){alert('براہ کرم اپنا نام لکھیں');return;}
+  uName=n;
+  document.getElementById('naam-box').style.display='none';
+  document.getElementById('topics').style.display='grid';
+  document.getElementById('chat-wrap').style.display='block';
+  loadTopic('rozi');
+  const box=document.getElementById('chatbox');
+  box.innerHTML='';
+  addB(box,'وعلیکم السلام '+getAddr()+'! 💚\n\nKCF Dost میں خوش آمدید۔ آپ کی ہر بات یہاں سنی جائے گی — کبھی جج نہیں کروں گا۔\n\nبتائیں '+getAddr()+' — آج دل میں کیا ہے؟','ai');
+}
+
+function setT(t,el){
+  uTopic=t;hist=[];
+  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');
+  loadTopic(t);
+  document.getElementById('chatbox').innerHTML='';
+  if(uName) addB(document.getElementById('chatbox'),'ٹھیک ہے '+getAddr()+'! '+topicName(t)+' کے بارے میں بات کرتے ہیں۔ بتائیں کیا مسئلہ ہے؟','ai');
+}
+
+function topicName(t){
+  return {rozi:'روزی اور پیسوں',sehat:'صحت',parhai:'پڑھائی',rishte:'رشتوں'}[t];
+}
+
+function loadTopic(t){
+  uTopic=t;
+  const a=ayaat[topicAyat[t]];
+  document.getElementById('ayat-text').textContent=a.t;
+  document.getElementById('ayat-ref').textContent=a.r;
+  const qrow=document.getElementById('qrow');
+  qrow.innerHTML='';
+  qqs[t].forEach(q=>{
+    const b=document.createElement('button');
+    b.className='qbtn';b.textContent=q;
+    b.onclick=()=>quickAsk(q);
+    qrow.appendChild(b);
+  });
+}
+
+function quickAsk(q){
+  document.getElementById('msgin').value=q;
+  sendMsg();
+}
+
+function getSys(){
+  const addr=getAddr();
+  const topics={rozi:'روزی، نوکری، پیسہ، کاروبار',sehat:'صحت، علاج، تندرستی',parhai:'تعلیم، بچوں کی پڑھائی',rishte:'گھر، خاندان، رشتے'};
+  return `آپ KCF Dost ہیں — کراچی کے محنتی اور غریب لوگوں کے لیے ایک مہربان اور ہمدرد ساتھی۔
+صارف کا نام: ${uName}۔ انہیں ہمیشہ "${addr}" کہہ کر مخاطب کریں۔
+موضوع: ${topics[uTopic]}
+ہدایات:
+- کوئی ## یا ** یا # نشانات بالکل نہ لکھیں — صرف سادہ اردو جملے
+- پہلے دل سے ہمدردی ظاہر کریں جیسے ایک پرانا دوست کرتا ہے
+- پھر ٢-٣ عملی مشورے سادہ الفاظ میں دیں
+- کسی مخصوص ہسپتال یا جگہ کا نام نہ لیں
+- جملے فطری اردو میں ہوں
+- آخر میں حوصلہ اور امید دیں
+- جواب ٤-٥ جملوں میں مکمل کریں`;
+}
+
+async function sendMsg(){
+  const inp=document.getElementById('msgin');
+  const msg=inp.value.trim();if(!msg)return;
+  inp.value='';
+  const box=document.getElementById('chatbox');
+  addB(box,msg,'user');
+  const t=addB(box,'...','typing');
+  hist.push({role:'user',content:msg});
+  try{
+    const res=await fetch('/api/chat',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({system:getSys(),messages:hist})
+    });
+    const data=await res.json();
+    let reply=data.content?.[0]?.text||'معذرت، دوبارہ کوشش کریں۔';
+    reply=reply.replace(/#{1,6}\s*/g,'').replace(/\*\*/g,'').replace(/\*/g,'').replace(/--+/g,'').trim();
+    t.remove();addB(box,reply,'ai');
+    hist.push({role:'assistant',content:reply});
+  }catch(e){t.remove();addB(box,'نیٹ ورک مسئلہ۔','ai');}
+}
+
+function addB(box,text,cls){
+  const d=document.createElement('div');
+  d.className='bub '+cls;
+  d.textContent=text;
+  box.appendChild(d);
+  box.scrollTop=box.scrollHeight;
+  return d;
+}
+
+function shareWA(){
+  const msg=encodeURIComponent('السلام علیکم KCF بھائیو! 💚\n\n"KCF Dost" — آپ کا اپنا AI ساتھی\n\nپیسہ، صحت، پڑھائی، رشتے — ہر مسئلے پر اردو میں رہنمائی\nنام سے پکارتا ہے، دل سے سنتا ہے 🤲\n\n"بے شک مشکل کے ساتھ آسانی ہے"\n\nلنک: https://rizwans-agency.vercel.app/kcf\n\nشیئر کریں — کسی کے کام آئے!');
+  window.open('https://wa.me/?text='+msg,'_blank');
+}
+
+document.getElementById('msgin').addEventListener('keydown',e=>{
+  if(e.key==='Enter'){e.preventDefault();sendMsg();}
+});
+</script>
+</body>
+</html>
