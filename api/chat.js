@@ -5,6 +5,11 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   try {
     const { messages, system } = req.body;
+    const urduInstruction = `آپ کو اردو میں جواب دینا ہے — بالکل اسی طرح جیسے کراچی کا ایک پڑھا لکھا دوست بات کرتا ہے۔
+سادہ اور آسان الفاظ استعمال کریں۔ مشکل یا کتابی اردو بالکل نہ لکھیں۔
+جیسے: "آپ یہ کام کر سکتے ہیں"، "یہ بہت آسان ہے"، "پہلے یہ کریں"۔
+انگریزی الفاظ جو عام بول چال میں ہیں وہ لکھ سکتے ہیں جیسے mobile, internet, online۔
+جواب چھوٹا اور سمجھ میں آنے والا ہو — ٣ سے ٤ جملے کافی ہیں۔\n\n`;
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -12,10 +17,10 @@ export default async function handler(req, res) {
         'Authorization': 'Bearer ' + process.env.GROQ_API_KEY
       },
       body: JSON.stringify({
-        model: 'llama-3.1-8b-instant',
-        max_tokens: 600,
+        model: 'llama-3.3-70b-versatile',
+        max_tokens: 500,
         messages: [
-          { role: 'system', content: system },
+          { role: 'system', content: urduInstruction + system },
           ...messages
         ]
       })
