@@ -4,200 +4,333 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rizwan's AI Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #f5f5f5; color: #1a1a1a; }
-.top-bar { background: #1a1a1a; color: white; text-align: center; padding: 10px; font-size: 12px; letter-spacing: 2px; direction: ltr; }
-.container { max-width: 920px; margin: 0 auto; padding: 2rem 1rem; }
-.hero { text-align: center; padding: 3rem 1rem; background: white; border-radius: 16px; margin-bottom: 2rem; border: 1px solid #e8e8e8; }
-.hero-tag { font-size: 11px; letter-spacing: 4px; color: #aaa; margin-bottom: 12px; direction: ltr; }
-.hero-brand { font-size: 38px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; direction: ltr; }
-.hero-name { font-size: 16px; color: #666; margin-bottom: 6px; }
-.hero-loc { font-size: 13px; color: #bbb; margin-bottom: 2rem; direction: ltr; }
-.hero-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
-.stat-num { font-size: 30px; font-weight: 700; color: #1a1a1a; direction: ltr; }
-.stat-lbl { font-size: 12px; color: #aaa; margin-top: 4px; direction: ltr; }
-.sec-label { font-size: 11px; letter-spacing: 3px; color: #aaa; margin-bottom: 14px; direction: ltr; }
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 2rem; }
-.service-card { background: white; border: 1px solid #e8e8e8; border-radius: 14px; padding: 1.25rem; text-align: center; }
-.service-icon { font-size: 30px; margin-bottom: 10px; }
-.service-name { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; direction: ltr; }
-.service-desc { font-size: 12px; color: #999; line-height: 1.6; }
-.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px; margin-bottom: 2rem; }
-.product-card { background: white; border: 1px solid #e8e8e8; border-radius: 16px; padding: 1.5rem; cursor: pointer; transition: all 0.2s; }
-.product-card:hover { border-color: #1a1a1a; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-.product-card.active { border: 2px solid #0066cc; }
-.p-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 14px; }
-.p-icon.pharmacy { background: #E1F5EE; }
-.p-icon.urdu { background: #EEEDFE; }
-.p-icon.jrsy { background: #f5f5f5; }
-.p-name { font-size: 17px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; direction: ltr; }
-.p-desc { font-size: 13px; color: #777; line-height: 1.7; margin-bottom: 14px; }
-.p-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
-.tag { font-size: 11px; padding: 3px 10px; border-radius: 12px; background: #f5f5f5; color: #888; direction: ltr; }
-.demo-btn { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #e0e0e0; background: white; color: #1a1a1a; font-size: 14px; cursor: pointer; font-family: inherit; }
-.demo-btn:hover { background: #f5f5f5; }
-.demo-panel { background: white; border: 1px solid #e8e8e8; border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; display: none; }
+:root {
+  --green: #0a7c4e;
+  --green-light: #e8f5ee;
+  --green-mid: #1a9e63;
+  --gold: #c9963a;
+  --gold-light: #fdf3e3;
+  --dark: #111827;
+  --gray: #6b7280;
+  --light: #f9fafb;
+  --white: #ffffff;
+  --border: #e5e7eb;
+}
+body { font-family: 'Inter', sans-serif; background: var(--light); color: var(--dark); }
+.urdu { font-family: 'Noto Nastaliq Urdu', serif; }
+
+/* TOP BAR */
+.top-bar { background: var(--dark); color: white; text-align: center; padding: 8px; font-size: 12px; letter-spacing: 2px; direction: ltr; }
+
+/* HERO */
+.hero { background: var(--dark); padding: 5rem 1rem 4rem; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 60% 40%, rgba(10,124,78,0.15) 0%, transparent 60%); pointer-events: none; }
+.hero-eyebrow { font-size: 11px; letter-spacing: 4px; color: var(--green-mid); margin-bottom: 1.5rem; direction: ltr; }
+.hero-brand { font-size: 52px; font-weight: 700; color: white; margin-bottom: 8px; direction: ltr; line-height: 1.1; }
+.hero-brand span { color: var(--green-mid); }
+.hero-name { font-size: 15px; color: #9ca3af; margin-bottom: 6px; font-family: 'Noto Nastaliq Urdu', serif; }
+.hero-loc { font-size: 13px; color: #6b7280; margin-bottom: 3rem; direction: ltr; }
+.hero-stats { display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; }
+.stat { text-align: center; }
+.stat-num { font-size: 36px; font-weight: 700; color: var(--green-mid); direction: ltr; }
+.stat-lbl { font-size: 12px; color: #6b7280; margin-top: 4px; direction: ltr; letter-spacing: 1px; }
+.stat-divider { width: 1px; background: #374151; align-self: stretch; }
+
+/* CONTAINER */
+.container { max-width: 980px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* SECTION */
+.section { padding: 4rem 0; }
+.section-eyebrow { font-size: 11px; letter-spacing: 3px; color: var(--green); margin-bottom: 8px; direction: ltr; font-weight: 600; }
+.section-title { font-size: 28px; font-weight: 700; color: var(--dark); margin-bottom: 2rem; font-family: 'Noto Nastaliq Urdu', serif; }
+
+/* SERVICES */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+.service-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; transition: all 0.2s; position: relative; overflow: hidden; }
+.service-card::before { content: ''; position: absolute; top: 0; right: 0; width: 4px; height: 100%; background: var(--green); border-radius: 0 16px 16px 0; opacity: 0; transition: opacity 0.2s; }
+.service-card:hover { border-color: var(--green); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(10,124,78,0.1); }
+.service-card:hover::before { opacity: 1; }
+.service-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 14px; background: var(--green-light); }
+.service-name { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 6px; direction: ltr; }
+.service-desc { font-size: 13px; color: var(--gray); line-height: 1.6; font-family: 'Noto Nastaliq Urdu', serif; }
+
+/* PRODUCTS */
+.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
+.product-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 1.75rem; cursor: pointer; transition: all 0.25s; }
+.product-card:hover { border-color: var(--green); box-shadow: 0 12px 40px rgba(10,124,78,0.12); transform: translateY(-4px); }
+.product-card.active { border: 2px solid var(--green); box-shadow: 0 12px 40px rgba(10,124,78,0.15); }
+.p-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; direction: ltr; }
+.p-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+.p-icon.pharmacy { background: linear-gradient(135deg, #e8f5ee, #c8eada); }
+.p-icon.urdu { background: linear-gradient(135deg, #ede9fe, #c4b5fd); }
+.p-icon.jrsy { background: linear-gradient(135deg, #f3f4f6, #e5e7eb); }
+.p-icon.kcf { background: linear-gradient(135deg, #e8f5ee, #a7f3d0); }
+.p-name { font-size: 18px; font-weight: 700; color: var(--dark); }
+.p-badge { font-size: 10px; letter-spacing: 1px; color: var(--green); background: var(--green-light); padding: 3px 8px; border-radius: 20px; direction: ltr; display: inline-block; margin-top: 4px; font-weight: 600; }
+.p-desc { font-size: 13px; color: var(--gray); line-height: 1.7; margin-bottom: 14px; font-family: 'Noto Nastaliq Urdu', serif; }
+.p-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.tag { font-size: 11px; padding: 4px 10px; border-radius: 20px; background: var(--light); color: var(--gray); direction: ltr; border: 1px solid var(--border); font-weight: 500; }
+.demo-btn { width: 100%; padding: 11px; border-radius: 12px; border: 1.5px solid var(--green); background: white; color: var(--green); font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 600; transition: all 0.2s; }
+.demo-btn:hover { background: var(--green); color: white; }
+
+/* DEMO PANEL */
+.demo-panel { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 1.75rem; margin-bottom: 2rem; display: none; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
 .demo-panel.visible { display: block; }
 .demo-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-.demo-title { font-size: 17px; font-weight: 600; color: #1a1a1a; direction: ltr; }
-.close-btn { background: #f5f5f5; border: none; cursor: pointer; color: #888; font-size: 18px; padding: 4px 10px; border-radius: 8px; }
-.quick-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-.qbtn { padding: 6px 14px; border-radius: 16px; border: 1px solid #e0e0e0; background: #f9f9f9; color: #666; font-size: 13px; cursor: pointer; font-family: inherit; }
-.qbtn:hover { border-color: #1a1a1a; color: #1a1a1a; }
-.chat-box { background: #f9f9f9; border-radius: 12px; padding: 14px; min-height: 200px; max-height: 280px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
-.bub { padding: 10px 14px; border-radius: 12px; font-size: 14px; line-height: 1.7; max-width: 86%; }
-.bub.ai { background: white; color: #1a1a1a; align-self: flex-start; border: 1px solid #e8e8e8; border-bottom-left-radius: 4px; direction: rtl; }
-.bub.user { background: #1a1a1a; color: white; align-self: flex-end; border-bottom-right-radius: 4px; direction: rtl; }
-.bub.typing { background: white; color: #bbb; font-style: italic; align-self: flex-start; border: 1px solid #e8e8e8; direction: ltr; }
-.input-row { display: flex; gap: 8px; }
-.msg-input { flex: 1; padding: 11px 16px; border: 1px solid #e0e0e0; border-radius: 10px; font-size: 14px; font-family: inherit; color: #1a1a1a; direction: rtl; outline: none; }
-.msg-input:focus { border-color: #1a1a1a; }
-.send-btn { padding: 11px 20px; background: #1a1a1a; color: white; border: none; border-radius: 10px; font-size: 15px; cursor: pointer; }
-.contact-section { background: white; border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; border: 1px solid #e8e8e8; }
-.contact-title { font-size: 18px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
-.contact-sub { font-size: 14px; color: #888; margin-bottom: 1.25rem; }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.contact-card { border: 1px solid #e8e8e8; border-radius: 12px; padding: 1rem; }
-.contact-flag { font-size: 22px; margin-bottom: 6px; }
-.contact-country { font-size: 14px; font-weight: 600; color: #1a1a1a; direction: ltr; }
-.contact-num { font-size: 13px; color: #aaa; margin: 4px 0 12px; direction: ltr; }
-.wa-btn { display: block; text-align: center; padding: 9px; color: white; border-radius: 10px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; font-family: inherit; width: 100%; direction: ltr; }
+.demo-title { font-size: 18px; font-weight: 700; color: var(--dark); direction: ltr; }
+.close-btn { background: var(--light); border: none; cursor: pointer; color: var(--gray); font-size: 20px; padding: 4px 12px; border-radius: 8px; transition: background 0.15s; }
+.close-btn:hover { background: var(--border); }
+.quick-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.qbtn { padding: 7px 14px; border-radius: 20px; border: 1px solid var(--green-light); background: var(--green-light); color: var(--green); font-size: 13px; cursor: pointer; font-family: 'Noto Nastaliq Urdu', serif; transition: all 0.15s; font-weight: 600; }
+.qbtn:hover { background: var(--green); color: white; border-color: var(--green); }
+.chat-box { background: var(--light); border-radius: 14px; padding: 16px; min-height: 220px; max-height: 300px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; margin-bottom: 14px; }
+.bub { padding: 12px 16px; border-radius: 16px; font-size: 14px; line-height: 1.8; max-width: 88%; font-family: 'Noto Nastaliq Urdu', serif; }
+.bub.ai { background: white; color: var(--dark); align-self: flex-start; border: 1px solid var(--border); border-bottom-left-radius: 4px; }
+.bub.user { background: var(--green); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+.bub.typing { background: white; color: var(--gray); font-style: italic; align-self: flex-start; border: 1px solid var(--border); direction: ltr; font-family: Inter, sans-serif; font-size: 13px; }
+.input-row { display: flex; gap: 10px; }
+.msg-input { flex: 1; padding: 12px 18px; border: 1.5px solid var(--border); border-radius: 12px; font-size: 14px; font-family: 'Noto Nastaliq Urdu', serif; color: var(--dark); direction: rtl; outline: none; transition: border-color 0.2s; background: white; }
+.msg-input:focus { border-color: var(--green); }
+.send-btn { padding: 12px 20px; background: var(--green); color: white; border: none; border-radius: 12px; font-size: 16px; cursor: pointer; transition: background 0.2s; flex-shrink: 0; }
+.send-btn:hover { background: var(--green-mid); }
+
+/* CONTACT */
+.contact-section { background: var(--dark); border-radius: 24px; padding: 3rem 2rem; margin-bottom: 2rem; }
+.contact-title { font-size: 24px; font-weight: 700; color: white; margin-bottom: 8px; font-family: 'Noto Nastaliq Urdu', serif; }
+.contact-sub { font-size: 14px; color: #9ca3af; margin-bottom: 2rem; font-family: 'Noto Nastaliq Urdu', serif; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.contact-card { border: 1px solid #374151; border-radius: 16px; padding: 1.25rem; background: #1f2937; }
+.contact-flag { font-size: 28px; margin-bottom: 8px; }
+.contact-country { font-size: 15px; font-weight: 600; color: white; direction: ltr; }
+.contact-num { font-size: 13px; color: #6b7280; margin: 4px 0 14px; direction: ltr; }
+.wa-btn { display: block; text-align: center; padding: 10px; color: white; border-radius: 12px; font-size: 13px; font-weight: 700; border: none; cursor: pointer; font-family: inherit; width: 100%; direction: ltr; transition: opacity 0.2s; letter-spacing: 0.5px; }
+.wa-btn:hover { opacity: 0.88; }
 .wa-btn.green { background: #25D366; }
 .wa-btn.blue { background: #0a7cff; }
-.footer { text-align: center; padding: 1.5rem; border-top: 1px solid #e8e8e8; margin-top: 1rem; }
-.footer-txt { font-size: 12px; color: #ccc; direction: ltr; }
+
+/* DIVIDER */
+.divider { height: 1px; background: var(--border); margin: 0; }
+
+/* FOOTER */
+.footer { text-align: center; padding: 2rem; }
+.footer-txt { font-size: 12px; color: #9ca3af; direction: ltr; }
+
 @media (max-width: 600px) {
-  .hero-brand { font-size: 28px; }
-  .hero-stats { gap: 1.5rem; }
+  .hero-brand { font-size: 36px; }
+  .hero-stats { gap: 2rem; }
   .contact-grid { grid-template-columns: 1fr; }
+  .stat-divider { display: none; }
 }
 </style>
 </head>
 <body>
+
 <div class="top-bar">RIZWAN'S AI AGENCY — KARACHI & UAE</div>
-<div class="container">
-  <div class="hero">
-    <div class="hero-tag">DIGITAL AI SOLUTIONS</div>
-    <div class="hero-brand">Rizwan's AI Agency</div>
-    <div class="hero-name">Syed Rizwan Ahmed</div>
+
+<div class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">DIGITAL AI SOLUTIONS</div>
+    <div class="hero-brand">Rizwan's <span>AI</span> Agency</div>
+    <div class="hero-name urdu">سید رضوان احمد</div>
     <div class="hero-loc">📍 Karachi, Pakistan &nbsp;·&nbsp; 🇦🇪 UAE</div>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Live AI Products</div></div>
-      <div class="stat"><div class="stat-num">2</div><div class="stat-lbl">Countries</div></div>
-      <div class="stat"><div class="stat-num">5+</div><div class="stat-lbl">Happy Clients</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-lbl">AI PRODUCTS</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-num">2</div><div class="stat-lbl">COUNTRIES</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-num">5+</div><div class="stat-lbl">CLIENTS</div></div>
     </div>
-  </div>
-  <div class="sec-label">WHAT WE OFFER</div>
-  <div class="services-grid">
-    <div class="service-card"><div class="service-icon">🤖</div><div class="service-name">AI Chatbots</div><div class="service-desc">کاروبار کے لیے اردو AI چیٹ بوٹس</div></div>
-    <div class="service-card"><div class="service-icon">🎬</div><div class="service-name">AI Video</div><div class="service-desc">Google Flow سے پروفیشنل ویڈیوز</div></div>
-    <div class="service-card"><div class="service-icon">🎓</div><div class="service-name">AI Training</div><div class="service-desc">اردو میں AI سیکھنے کے ٹولز</div></div>
-    <div class="service-card"><div class="service-icon">🌐</div><div class="service-name">AI Web Tools</div><div class="service-desc">ویب سائٹ پر AI انٹیگریشن</div></div>
-  </div>
-  <div class="sec-label">LIVE AI PRODUCTS — DEMOS</div>
-  <div class="products-grid">
-    <div class="product-card" id="card-pharmacy" onclick="openDemo('pharmacy')">
-      <div class="p-icon pharmacy">💊</div>
-      <div class="p-name">Pharmacy AI</div>
-      <div class="p-desc">دوائی کی معلومات اور اسٹاک چیک — اردو میں</div>
-      <div class="p-tags"><span class="tag">Urdu</span><span class="tag">Healthcare</span><span class="tag">Chatbot</span></div>
-      <button class="demo-btn">▶ Live Demo چلائیں</button>
-    </div>
-    <div class="product-card" id="card-urdu" onclick="openDemo('urdu')">
-      <div class="p-icon urdu">🎓</div>
-      <div class="p-name">AI Learning Tool</div>
-      <div class="p-desc">بالغوں کے لیے اردو میں AI تعلیمی پلیٹ فارم</div>
-      <div class="p-tags"><span class="tag">Education</span><span class="tag">Urdu AI</span><span class="tag">Quiz</span></div>
-      <button class="demo-btn">▶ Live Demo چلائیں</button>
-    </div>
-    <div class="product-card" id="card-jrsy" onclick="openDemo('jrsy')">
-      <div class="p-icon jrsy">👔</div>
-      <div class="p-name">JRSY Style AI</div>
-      <div class="p-desc">کپڑوں کی پسند — AI اسٹائل مشیر + UAE B2B</div>
-      <div class="p-tags"><span class="tag">Fashion</span><span class="tag">B2B UAE</span><span class="tag">WhatsApp</span></div>
-      <button class="demo-btn">▶ Live Demo چلائیں</button>
-    </div>
-  </div>
-  <div class="demo-panel" id="demo-pharmacy">
-    <div class="demo-header">
-      <div class="demo-title">💊 Pharmacy AI — Live Demo</div>
-      <button class="close-btn" onclick="closeDemo()">✕</button>
-    </div>
-    <div class="quick-row">
-      <button class="qbtn" onclick="ask('pharmacy','Panadol کے بارے میں بتائیں')">💊 Panadol</button>
-      <button class="qbtn" onclick="ask('pharmacy','Augmentin دستیاب ہے؟')">📦 اسٹاک</button>
-      <button class="qbtn" onclick="ask('pharmacy','بخار کی دوائی؟')">🌡️ بخار</button>
-      <button class="qbtn" onclick="ask('pharmacy','بچوں کی کھانسی کی دوائی؟')">👶 بچے</button>
-    </div>
-    <div class="chat-box" id="chat-pharmacy"><div class="bub ai">السلام علیکم! دوائی کا نام یا سوال پوچھیں۔</div></div>
-    <div class="input-row">
-      <input class="msg-input" id="inp-pharmacy" placeholder="دوائی کا نام لکھیں..." />
-      <button class="send-btn" onclick="send('pharmacy')">↑</button>
-    </div>
-  </div>
-  <div class="demo-panel" id="demo-urdu">
-    <div class="demo-header">
-      <div class="demo-title">🎓 AI Learning — Live Demo</div>
-      <button class="close-btn" onclick="closeDemo()">✕</button>
-    </div>
-    <div class="quick-row">
-      <button class="qbtn" onclick="ask('urdu','AI کیا ہے آسان الفاظ میں؟')">AI کیا ہے؟</button>
-      <button class="qbtn" onclick="ask('urdu','ChatGPT سے پیسے کیسے کمائیں؟')">ChatGPT income</button>
-      <button class="qbtn" onclick="ask('urdu','Google Flow کیا ہے؟')">Google Flow</button>
-    </div>
-    <div class="chat-box" id="chat-urdu"><div class="bub ai">السلام علیکم! AI کے بارے میں جو چاہیں پوچھیں۔</div></div>
-    <div class="input-row">
-      <input class="msg-input" id="inp-urdu" placeholder="AI کے بارے میں سوال..." />
-      <button class="send-btn" onclick="send('urdu')">↑</button>
-    </div>
-  </div>
-  <div class="demo-panel" id="demo-jrsy">
-    <div class="demo-header">
-      <div class="demo-title">👔 JRSY Style AI — Live Demo</div>
-      <button class="close-btn" onclick="closeDemo()">✕</button>
-    </div>
-    <div class="quick-row">
-      <button class="qbtn" onclick="ask('jrsy','شادی کے لیے مرد کا اسٹائل؟')">شادی اسٹائل</button>
-      <button class="qbtn" onclick="ask('jrsy','UAE میں bulk order؟')">UAE Bulk</button>
-      <button class="qbtn" onclick="ask('jrsy','بچوں کے casual کپڑے؟')">بچوں کے کپڑے</button>
-    </div>
-    <div class="chat-box" id="chat-jrsy"><div class="bub ai">JRSY Style Assistant حاضر ہے!</div></div>
-    <div class="input-row">
-      <input class="msg-input" id="inp-jrsy" placeholder="اسٹائل یا آرڈر کے بارے میں..." />
-      <button class="send-btn" onclick="send('jrsy')">↑</button>
-    </div>
-  </div>
-  <div class="sec-label">CONTACT US</div>
-  <div class="contact-section">
-    <div class="contact-title">اپنے کاروبار کے لیے AI Tool بنوائیں</div>
-    <div class="contact-sub">Syed Rizwan Ahmed سے آج ہی رابطہ کریں</div>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="contact-flag">🇵🇰</div>
-        <div class="contact-country">Karachi, Pakistan</div>
-        <div class="contact-num">+92 333 776 1709</div>
-        <button class="wa-btn green" onclick="window.open('https://wa.me/923337761709?text='+encodeURIComponent('السلام علیکم! AI tool کے بارے میں بات کرنی ہے۔'),'_blank')">💬 WhatsApp Karachi</button>
-      </div>
-      <div class="contact-card">
-        <div class="contact-flag">🇦🇪</div>
-        <div class="contact-country">UAE Office</div>
-        <div class="contact-num">+971 54 527 1033</div>
-        <button class="wa-btn blue" onclick="window.open('https://wa.me/971545271033?text='+encodeURIComponent('Hello! I want an AI solution.'),'_blank')">💬 WhatsApp UAE</button>
-      </div>
-    </div>
-  </div>
-  <div class="footer">
-    <div class="footer-txt">© 2025 Rizwan's AI Agency — Syed Rizwan Ahmed | Karachi & UAE</div>
   </div>
 </div>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-eyebrow">WHAT WE OFFER</div>
+    <div class="section-title urdu">ہماری خدمات</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <div class="service-name">AI Chatbots</div>
+        <div class="service-desc urdu">کاروبار کے لیے اردو AI چیٹ بوٹس</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎬</div>
+        <div class="service-name">AI Video</div>
+        <div class="service-desc urdu">Google Flow سے پروفیشنل ویڈیوز</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎓</div>
+        <div class="service-name">AI Training</div>
+        <div class="service-desc urdu">اردو میں AI سیکھنے کے ٹولز</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌐</div>
+        <div class="service-name">AI Web Tools</div>
+        <div class="service-desc urdu">ویب سائٹ پر AI انٹیگریشن</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-eyebrow">LIVE DEMOS</div>
+    <div class="section-title urdu">ہمارے AI پروڈکٹس</div>
+    <div class="products-grid">
+      <div class="product-card" id="card-pharmacy" onclick="openDemo('pharmacy')">
+        <div class="p-header">
+          <div class="p-icon pharmacy">💊</div>
+          <div><div class="p-name">Pharmacy AI</div><div class="p-badge">HEALTHCARE</div></div>
+        </div>
+        <div class="p-desc urdu">دوائی کی معلومات اور اسٹاک چیک — اردو میں فوری جواب</div>
+        <div class="p-tags"><span class="tag">Urdu</span><span class="tag">Healthcare</span><span class="tag">Chatbot</span></div>
+        <button class="demo-btn">▶ Live Demo چلائیں</button>
+      </div>
+      <div class="product-card" id="card-urdu" onclick="openDemo('urdu')">
+        <div class="p-header">
+          <div class="p-icon urdu-icon">🎓</div>
+          <div><div class="p-name">AI Learning</div><div class="p-badge">EDUCATION</div></div>
+        </div>
+        <div class="p-desc urdu">بالغوں کے لیے اردو میں AI تعلیمی پلیٹ فارم</div>
+        <div class="p-tags"><span class="tag">Education</span><span class="tag">Urdu AI</span><span class="tag">Quiz</span></div>
+        <button class="demo-btn">▶ Live Demo چلائیں</button>
+      </div>
+      <div class="product-card" id="card-jrsy" onclick="openDemo('jrsy')">
+        <div class="p-header">
+          <div class="p-icon jrsy">👔</div>
+          <div><div class="p-name">JRSY Style AI</div><div class="p-badge">FASHION</div></div>
+        </div>
+        <div class="p-desc urdu">کپڑوں کی پسند — AI اسٹائل مشیر + UAE B2B</div>
+        <div class="p-tags"><span class="tag">Fashion</span><span class="tag">B2B UAE</span><span class="tag">WhatsApp</span></div>
+        <button class="demo-btn">▶ Live Demo چلائیں</button>
+      </div>
+      <div class="product-card" id="card-kcf" onclick="openDemo('kcf')">
+        <div class="p-header">
+          <div class="p-icon kcf">💚</div>
+          <div><div class="p-name">KCF Dost</div><div class="p-badge">COMMUNITY</div></div>
+        </div>
+        <div class="p-desc urdu">دکھی دلوں کے لیے — پیسہ، صحت، پڑھائی، رشتے</div>
+        <div class="p-tags"><span class="tag">Welfare</span><span class="tag">Urdu</span><span class="tag">Community</span></div>
+        <button class="demo-btn">▶ Live Demo چلائیں</button>
+      </div>
+    </div>
+
+    <!-- DEMO PANELS -->
+    <div style="margin-top: 2rem;">
+      <div class="demo-panel" id="demo-pharmacy">
+        <div class="demo-header">
+          <div class="demo-title">💊 Pharmacy AI</div>
+          <button class="close-btn" onclick="closeDemo()">✕</button>
+        </div>
+        <div class="quick-row">
+          <button class="qbtn" onclick="ask('pharmacy','Panadol کے بارے میں بتائیں')">Panadol</button>
+          <button class="qbtn" onclick="ask('pharmacy','Augmentin دستیاب ہے؟')">اسٹاک چیک</button>
+          <button class="qbtn" onclick="ask('pharmacy','بخار کی دوائی؟')">بخار</button>
+          <button class="qbtn" onclick="ask('pharmacy','بچوں کی کھانسی؟')">بچے</button>
+        </div>
+        <div class="chat-box" id="chat-pharmacy"><div class="bub ai urdu">السلام علیکم! دوائی کا نام یا سوال پوچھیں۔</div></div>
+        <div class="input-row">
+          <input class="msg-input" id="inp-pharmacy" placeholder="دوائی کا نام لکھیں..." />
+          <button class="send-btn" onclick="send('pharmacy')">↑</button>
+        </div>
+      </div>
+
+      <div class="demo-panel" id="demo-urdu">
+        <div class="demo-header">
+          <div class="demo-title">🎓 AI Learning</div>
+          <button class="close-btn" onclick="closeDemo()">✕</button>
+        </div>
+        <div class="quick-row">
+          <button class="qbtn" onclick="ask('urdu','AI کیا ہے آسان الفاظ میں؟')">AI کیا ہے؟</button>
+          <button class="qbtn" onclick="ask('urdu','ChatGPT سے پیسے کیسے کمائیں؟')">ChatGPT income</button>
+          <button class="qbtn" onclick="ask('urdu','Google Flow کیا ہے؟')">Google Flow</button>
+        </div>
+        <div class="chat-box" id="chat-urdu"><div class="bub ai urdu">السلام علیکم! AI کے بارے میں جو چاہیں پوچھیں۔</div></div>
+        <div class="input-row">
+          <input class="msg-input" id="inp-urdu" placeholder="AI کے بارے میں سوال..." />
+          <button class="send-btn" onclick="send('urdu')">↑</button>
+        </div>
+      </div>
+
+      <div class="demo-panel" id="demo-jrsy">
+        <div class="demo-header">
+          <div class="demo-title">👔 JRSY Style AI</div>
+          <button class="close-btn" onclick="closeDemo()">✕</button>
+        </div>
+        <div class="quick-row">
+          <button class="qbtn" onclick="ask('jrsy','شادی کے لیے مرد کا اسٹائل؟')">شادی اسٹائل</button>
+          <button class="qbtn" onclick="ask('jrsy','UAE میں bulk order؟')">UAE Bulk</button>
+          <button class="qbtn" onclick="ask('jrsy','بچوں کے casual کپڑے؟')">بچوں کے کپڑے</button>
+        </div>
+        <div class="chat-box" id="chat-jrsy"><div class="bub ai urdu">JRSY Style Assistant حاضر ہے!</div></div>
+        <div class="input-row">
+          <input class="msg-input" id="inp-jrsy" placeholder="اسٹائل یا آرڈر کے بارے میں..." />
+          <button class="send-btn" onclick="send('jrsy')">↑</button>
+        </div>
+      </div>
+
+      <div class="demo-panel" id="demo-kcf">
+        <div class="demo-header">
+          <div class="demo-title">💚 KCF Dost</div>
+          <button class="close-btn" onclick="closeDemo()">✕</button>
+        </div>
+        <div class="quick-row">
+          <button class="qbtn" onclick="ask('kcf','نوکری نہیں مل رہی کیا کروں؟')">نوکری</button>
+          <button class="qbtn" onclick="ask('kcf','گھر چلانا مشکل ہو گیا ہے')">پیسہ</button>
+          <button class="qbtn" onclick="ask('kcf','بچے کی پڑھائی کے لیے مدد چاہیے')">پڑھائی</button>
+          <button class="qbtn" onclick="ask('kcf','صحت کا مسئلہ ہے پیسے نہیں')">صحت</button>
+        </div>
+        <div class="chat-box" id="chat-kcf"><div class="bub ai urdu">السلام علیکم! 💚 یہاں آپ کی بات سنی جائے گی — بے جھجھک لکھیں۔</div></div>
+        <div class="input-row">
+          <input class="msg-input" id="inp-kcf" placeholder="اپنا مسئلہ یا بات لکھیں..." />
+          <button class="send-btn" onclick="send('kcf')">↑</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="contact-section">
+      <div class="contact-title urdu">اپنے کاروبار کے لیے AI Tool بنوائیں</div>
+      <div class="contact-sub urdu">سید رضوان احمد سے آج ہی رابطہ کریں — مفت مشاورت دستیاب ہے</div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-flag">🇵🇰</div>
+          <div class="contact-country">Karachi, Pakistan</div>
+          <div class="contact-num">+92 334 133 1972</div>
+          <button class="wa-btn green" onclick="window.open('https://wa.me/923341331972?text='+encodeURIComponent('السلام علیکم! AI tool کے بارے میں بات کرنی ہے۔'),'_blank')">💬 WhatsApp Karachi</button>
+        </div>
+        <div class="contact-card">
+          <div class="contact-flag">🇦🇪</div>
+          <div class="contact-country">UAE Office</div>
+          <div class="contact-num">+971 54 527 1033</div>
+          <button class="wa-btn blue" onclick="window.open('https://wa.me/971545271033?text='+encodeURIComponent('Hello! I want an AI solution for my business.'),'_blank')">💬 WhatsApp UAE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-txt">© 2025 Rizwan's AI Agency — Syed Rizwan Ahmed | Karachi & UAE</div>
+</div>
+
 <script>
 const SYS = {
-  pharmacy: 'آپ Al-Shifa Pharmacy کے AI اسسٹنٹ ہیں۔ اردو میں مختصر جواب دیں۔ Panadol، Brufen، Augmentin، ORS، Septran دستیاب ہیں۔ آخر میں ڈاکٹر کے مشورے کی یاد دہانی کریں۔',
-  urdu: 'آپ ایک دوستانہ AI استاد ہیں جو اردو میں AI سکھاتے ہیں۔ آسان اردو میں ٣-٤ جملوں میں جواب دیں۔',
-  jrsy: 'آپ JRSY پاکستانی کلوتھنگ برانڈ کے AI اسسٹنٹ ہیں۔ اردو یا انگریزی میں جواب دیں۔ Karachi: +923337761709، UAE: +971545271033'
+  pharmacy: 'آپ ایک فارمیسی کے مددگار ہیں۔ آسان اردو میں جواب دیں۔ Panadol، Brufen، Augmentin، ORS، Septran دستیاب ہیں۔ آخر میں ڈاکٹر سے مشورے کی بات کریں۔',
+  urdu: 'آپ ایک AI استاد ہیں۔ آسان اردو میں AI کے بارے میں سمجھائیں۔ مثالیں دیں۔ جواب چھوٹا رکھیں۔',
+  jrsy: 'آپ JRSY کپڑوں کی دکان کے مددگار ہیں۔ اردو میں اسٹائل کے مشورے دیں۔ آرڈر کے لیے: Karachi +923341331972، UAE +971545271033',
+  kcf: 'آپ KCF Dost ہیں — ایک مہربان اور ہمدرد ساتھی۔ کراچی کے محنتی لوگوں کی مدد کریں۔ پہلے دل سے ہمدردی ظاہر کریں۔ پھر عملی مشورہ دیں۔ ہمیشہ امید دیں۔ آسان اردو میں جواب دیں۔'
 };
-const H = { pharmacy: [], urdu: [], jrsy: [] };
+const H = { pharmacy: [], urdu: [], jrsy: [], kcf: [] };
+
 function openDemo(id) {
   document.querySelectorAll('.demo-panel').forEach(p => p.classList.remove('visible'));
   document.querySelectorAll('.product-card').forEach(c => c.classList.remove('active'));
@@ -216,7 +349,7 @@ async function send(id) {
   inp.value='';
   const box=document.getElementById('chat-'+id);
   addB(box,msg,'user');
-  const t=addB(box,'جواب آ رہا ہے...','typing');
+  const t=addB(box,'...','typing');
   H[id].push({role:'user',content:msg});
   try {
     const res=await fetch('/api/chat',{
@@ -231,10 +364,12 @@ async function send(id) {
   } catch(e){t.remove();addB(box,'نیٹ ورک مسئلہ۔','ai');}
 }
 function addB(box,text,cls){
-  const d=document.createElement('div');d.className='bub '+cls;d.textContent=text;
+  const d=document.createElement('div');
+  d.className='bub '+cls+(cls==='ai'?' urdu':'');
+  d.textContent=text;
   box.appendChild(d);box.scrollTop=box.scrollHeight;return d;
 }
-['pharmacy','urdu','jrsy'].forEach(id=>{
+['pharmacy','urdu','jrsy','kcf'].forEach(id=>{
   document.getElementById('inp-'+id).addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();send(id);}});
 });
 </script>
