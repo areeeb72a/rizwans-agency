@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/kcf", "destination": "/kcf.html" }
+  ]
+}
