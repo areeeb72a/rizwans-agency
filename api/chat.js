@@ -16,15 +16,18 @@ export default async function handler(req, res) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           system_instruction: { parts: [{ text: system }] },
-          contents: geminiMessages,
+          contents: geminiMessages.length > 0 ? geminiMessages : [{ role: 'user', parts: [{ text: 'السلام علیکم' }] }],
           generationConfig: { maxOutputTokens: 500 }
         })
       }
     );
     const data = await response.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || 'معذرت، دوبارہ کوشش کریں۔';
+    console.log('Gemini response:', JSON.stringify(data));
+    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || 
+                 data?.error?.message || 
+                 'معذرت، دوبارہ کوشش کریں۔';
     res.status(200).json({ content: [{ text }] });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ content: [{ text: err.message }] });
   }
 }
