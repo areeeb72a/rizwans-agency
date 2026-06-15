@@ -482,9 +482,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
           <div id="tool1-area">
             <input id="t1-brand" style="width:100%;padding:9px 14px;border:1px solid var(--border2);border-radius:8px;font-size:13px;font-family:Inter,sans-serif;color:var(--text);background:rgba(0,0,0,0.2);margin-bottom:8px;outline:none;direction:ltr" placeholder="Brand name (e.g. ABABEEL Paint)"/>
             <input id="t1-product" style="width:100%;padding:9px 14px;border:1px solid var(--border2);border-radius:8px;font-size:13px;font-family:Inter,sans-serif;color:var(--text);background:rgba(0,0,0,0.2);margin-bottom:12px;outline:none;direction:ltr" placeholder="Product (e.g. Premium Wall Paint)"/>
-            <button onclick="runTool1()" style="width:100%;padding:11px;border-radius:10px;background:linear-gradient(135deg,#3b6fd4,#5b8dee);color:white;border:none;font-size:14px;cursor:pointer;font-family:Inter,sans-serif;font-weight:700;letter-spacing:0.5px">
-              🎬 Generate Commercial Script
-            </button>
+            <button id="t1-btn" onclick="runTool1()" style="width:100%;padding:11px;border-radius:10px;background:linear-gradient(135deg,#3b6fd4,#5b8dee);color:white;border:none;font-size:14px;cursor:pointer;font-family:Inter,sans-serif;font-weight:700;letter-spacing:0.5px">🎬 Generate Commercial Script</button>
           </div>
           <div id="tool1-result" style="display:none;margin-top:14px;background:rgba(0,0,0,0.2);border:1px solid var(--border2);border-radius:10px;padding:14px;font-size:13px;color:var(--text);line-height:1.8;max-height:200px;overflow-y:auto;font-family:Noto Nastaliq Urdu,serif;direction:rtl"></div>
           <div id="tool1-limit" style="display:none;margin-top:14px;text-align:center;padding:14px;background:rgba(240,180,41,0.08);border:1px solid rgba(240,180,41,0.2);border-radius:10px">
@@ -511,9 +509,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
           </div>
           <div id="tool2-area">
             <textarea id="t2-story" style="width:100%;padding:9px 14px;border:1px solid var(--border2);border-radius:8px;font-size:13px;font-family:Noto Nastaliq Urdu,serif;color:var(--text);background:rgba(0,0,0,0.2);margin-bottom:12px;outline:none;direction:rtl;resize:none;height:80px" placeholder="مکالمے یا کہانی لکھیں..."></textarea>
-            <button onclick="runTool2()" style="width:100%;padding:11px;border-radius:10px;background:linear-gradient(135deg,#6b21a8,#a78bfa);color:white;border:none;font-size:14px;cursor:pointer;font-family:Inter,sans-serif;font-weight:700;letter-spacing:0.5px">
-              🎭 Generate Scene
-            </button>
+            <button id="t2-btn" onclick="runTool2()" style="width:100%;padding:11px;border-radius:10px;background:linear-gradient(135deg,#6b21a8,#a78bfa);color:white;border:none;font-size:14px;cursor:pointer;font-family:Inter,sans-serif;font-weight:700;letter-spacing:0.5px">🎭 Generate Scene</button>
           </div>
           <div id="tool2-result" style="display:none;margin-top:14px;background:rgba(0,0,0,0.2);border:1px solid var(--border2);border-radius:10px;padding:14px;font-size:13px;color:var(--text);line-height:1.8;max-height:200px;overflow-y:auto;font-family:Noto Nastaliq Urdu,serif;direction:rtl"></div>
           <div id="tool2-limit" style="display:none;margin-top:14px;text-align:center;padding:14px;background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:10px">
@@ -582,121 +578,122 @@ const SYS={
   kcf:'آپ KCF Dost ہیں — ایک مہربان ساتھی۔ صرف سادہ اردو جملوں میں بات کریں — کوئی ## یا ** نشانات نہ لکھیں۔ پہلے ہمدردی ظاہر کریں، پھر عملی مشورے دیں۔ ہمیشہ امید دیں۔'
 };
 const H={pharmacy:[],urdu:[],jrsy:[],kcf:[]};
+
 function openDemo(id){
-  document.querySelectorAll('.demo').forEach(p=>p.classList.remove('show'));
-  document.querySelectorAll('.prod').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.demo').forEach(function(p){p.classList.remove('show');});
+  document.querySelectorAll('.prod').forEach(function(c){c.classList.remove('active');});
   document.getElementById('demo-'+id).classList.add('show');
   document.getElementById('card-'+id).classList.add('active');
-  setTimeout(()=>document.getElementById('demo-'+id).scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+  setTimeout(function(){document.getElementById('demo-'+id).scrollIntoView({behavior:'smooth',block:'nearest'});},100);
 }
 function closeDemo(){
-  document.querySelectorAll('.demo').forEach(p=>p.classList.remove('show'));
-  document.querySelectorAll('.prod').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.demo').forEach(function(p){p.classList.remove('show');});
+  document.querySelectorAll('.prod').forEach(function(c){c.classList.remove('active');});
 }
 function ask(id,msg){document.getElementById('inp-'+id).value=msg;send(id);}
+
 async function send(id){
-  const inp=document.getElementById('inp-'+id);
-  const msg=inp.value.trim();if(!msg)return;
+  var inp=document.getElementById('inp-'+id);
+  var msg=inp.value.trim();if(!msg)return;
   inp.value='';
-  const box=document.getElementById('chat-'+id);
+  var box=document.getElementById('chat-'+id);
   addB(box,msg,'user');
-  const t=addB(box,'...','typing');
+  var t=addB(box,'...','typing');
   H[id].push({role:'user',content:msg});
   try{
-    const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:SYS[id],messages:H[id]})});
-    const data=await res.json();
-    let reply=data.content?.[0]?.text||'معذرت، دوبارہ کوشش کریں۔';
-    reply=reply.replace(/#{1,6}\s*/g,'').replace(/\*\*/g,'').replace(/\*/g,'').replace(/--+/g,'').trim();
+    var res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:SYS[id],messages:H[id]})});
+    var data=await res.json();
+    var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:'معذرت، دوبارہ کوشش کریں۔';
+    reply=reply.replace(/#{1,6} */g,'').replace(/\*\*/g,'').replace(/\*/g,'').trim();
     t.remove();addB(box,reply,'ai');
     H[id].push({role:'assistant',content:reply});
   }catch(e){t.remove();addB(box,'نیٹ ورک مسئلہ۔','ai');}
 }
+
 function addB(box,text,cls){
-  const d=document.createElement('div');d.className='bub '+cls;d.textContent=text;
+  var d=document.createElement('div');d.className='bub '+cls;d.textContent=text;
   box.appendChild(d);box.scrollTop=box.scrollHeight;return d;
 }
-['pharmacy','urdu','jrsy','kcf'].forEach(id=>{
-  document.getElementById('inp-'+id).addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();send(id);}});
+
+['pharmacy','urdu','jrsy','kcf'].forEach(function(id){
+  document.getElementById('inp-'+id).addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();send(id);}});
 });
 
-// Tool trial counts - in memory
-const trialCounts = {t1_count:0, t2_count:0};
-function getCount(key){ return trialCounts[key]||0; }
-function setCount(key,v){ trialCounts[key]=v; }
+// Tool trial counts - session only
+var t1Count=0, t2Count=0;
 
 async function runTool1(){
-  const brand = document.getElementById('t1-brand').value.trim();
-  const product = document.getElementById('t1-product').value.trim();
+  var brand=document.getElementById('t1-brand').value.trim();
+  var product=document.getElementById('t1-product').value.trim();
   if(!brand||!product){alert('Brand name aur product dono likhein!');return;}
-  const count = getCount('t1_count');
-  if(count>=2){
+  if(t1Count>=2){
     document.getElementById('tool1-area').style.display='none';
     document.getElementById('tool1-limit').style.display='block';
     return;
   }
-  const btn = event.target;
-  btn.textContent='⏳ Generating...';btn.disabled=true;
+  var btn=document.getElementById('t1-btn');
+  btn.textContent='Generating...';btn.disabled=true;
   try{
-    const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},
+    var res=await fetch('/api/chat',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
-        system:'آپ ایک ماہر TV کمرشل ڈائریکٹر ہیں۔ برانڈ اور پروڈکٹ کے لیے ایک مکمل 30 سیکنڈ کا TVC سکرپٹ اردو میں لکھیں۔ سین، ڈائیلاگ، موسیقی کی ہدایات شامل کریں۔ کوئی ## یا ** نشانات نہ لکھیں۔',
-        messages:[{role:'user',content:'Brand: '+brand+'
-Product: '+product+'
-ایک مکمل TVC سکرپٹ بنائیں'}]
+        tool:'commercial',
+        system:'',
+        messages:[{role:'user',content:'Brand Name: '+brand+' | Product: '+product}]
       })
     });
-    const data=await res.json();
-    let reply=data.content?.[0]?.text||'دوبارہ کوشش کریں۔';
-    reply=reply.replace(/#{1,6}\s*/g,'').replace(/\*\*/g,'').replace(/\*/g,'').trim();
+    var data=await res.json();
+    var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:'Dobara koshish karein.';
+    reply=reply.replace(/#{1,6} */g,'').replace(/\*\*/g,'').replace(/\*/g,'').trim();
     document.getElementById('tool1-result').style.display='block';
     document.getElementById('tool1-result').textContent=reply;
-    setCount('t1_count', count+1);
-    if(count+1>=2){
-      setTimeout(()=>{
+    t1Count++;
+    if(t1Count>=2){
+      setTimeout(function(){
         document.getElementById('tool1-area').style.display='none';
         document.getElementById('tool1-limit').style.display='block';
       },3000);
     }
-  }catch(e){alert('نیٹ ورک مسئلہ۔');}
+  }catch(e){alert('Network masla.');}
   btn.textContent='🎬 Generate Commercial Script';btn.disabled=false;
 }
 
 async function runTool2(){
-  const story = document.getElementById('t2-story').value.trim();
-  if(!story){alert('کہانی یا مکالمے لکھیں!');return;}
-  const count = getCount('t2_count');
-  if(count>=2){
+  var story=document.getElementById('t2-story').value.trim();
+  if(!story){alert('Kahani ya mukalme likhein!');return;}
+  if(t2Count>=2){
     document.getElementById('tool2-area').style.display='none';
     document.getElementById('tool2-limit').style.display='block';
     return;
   }
-  const btn = event.target;
-  btn.textContent='⏳ Generating...';btn.disabled=true;
+  var btn=document.getElementById('t2-btn');
+  btn.textContent='Generating...';btn.disabled=true;
   try{
-    const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},
+    var res=await fetch('/api/chat',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
         tool:'directors_cut',
         system:'',
         messages:[{role:'user',content:story}]
       })
     });
-    const data=await res.json();
-    let reply=data.content?.[0]?.text||'دوبارہ کوشش کریں۔';
-    reply=reply.replace(/#{1,6}\s*/g,'').replace(/\*\*/g,'').replace(/\*/g,'').trim();
+    var data=await res.json();
+    var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:'Dobara koshish karein.';
+    reply=reply.replace(/#{1,6} */g,'').replace(/\*\*/g,'').replace(/\*/g,'').trim();
     document.getElementById('tool2-result').style.display='block';
     document.getElementById('tool2-result').textContent=reply;
-    setCount('t2_count', count+1);
-    if(count+1>=2){
-      setTimeout(()=>{
+    t2Count++;
+    if(t2Count>=2){
+      setTimeout(function(){
         document.getElementById('tool2-area').style.display='none';
         document.getElementById('tool2-limit').style.display='block';
       },3000);
     }
-  }catch(e){alert('نیٹ ورک مسئلہ۔');}
+  }catch(e){alert('Network masla.');}
   btn.textContent='🎭 Generate Scene';btn.disabled=false;
 }
-
-// No load check needed for in-memory counts
 </script>
 </body>
 </html>
