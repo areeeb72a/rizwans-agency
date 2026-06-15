@@ -84,9 +84,10 @@ body{font-family:'Noto Nastaliq Urdu',serif;background:#0a1a0f;color:#e8f5ee;min
 <div class="container">
 
   <div class="naam-box" id="naam-box">
-    <div class="naam-title">پہلے اپنا نام بتائیں 💚</div>
+    <div class="naam-title">پہلے اپنا نام اور شہر بتائیں 💚</div>
     <div class="naam-sub">تاکہ آپ سے اپنائیت سے بات ہو سکے</div>
     <input class="naam-input" id="naam-inp" placeholder="آپ کا نام لکھیں..." maxlength="30"/>
+    <input class="naam-input" id="city-inp" placeholder="آپ کا شہر لکھیں... (مثلاً: کراچی، لاہور، حیدرآباد)" maxlength="50"/>
     <div class="gender-row">
       <button class="gbtn sel" id="g-bhai" onclick="setG('bhai',this)">👨 بھائی</button>
       <button class="gbtn" id="g-behan" onclick="setG('behan',this)">👩 بہن</button>
@@ -121,7 +122,7 @@ body{font-family:'Noto Nastaliq Urdu',serif;background:#0a1a0f;color:#e8f5ee;min
 <div class="footer">KCF Dost — Rizwan's AI Agency | kcfwelfare.org</div>
 
 <script>
-let uName='', uGender='bhai', uTopic='rozi';
+let uName='', uCity='', uGender='bhai', uTopic='rozi';
 let hist=[];
 
 const ayaat=[
@@ -154,8 +155,10 @@ function getAddr(){
 
 function startChat(){
   const n=document.getElementById('naam-inp').value.trim();
+  const c=document.getElementById('city-inp').value.trim();
   if(!n){alert('براہ کرم اپنا نام لکھیں');return;}
-  uName=n;
+  if(!c){alert('براہ کرم اپنا شہر لکھیں');return;}
+  uName=n; uCity=c;
   document.getElementById('naam-box').style.display='none';
   document.getElementById('topics').style.display='grid';
   document.getElementById('chat-wrap').style.display='block';
@@ -201,14 +204,15 @@ function quickAsk(q){
 function getSys(){
   const addr=getAddr();
   const topics={rozi:'روزی، نوکری، پیسہ، کاروبار',sehat:'صحت، علاج، تندرستی',parhai:'تعلیم، بچوں کی پڑھائی',rishte:'گھر، خاندان، رشتے'};
-  return `آپ KCF Dost ہیں — کراچی کے محنتی اور غریب لوگوں کے لیے ایک مہربان اور ہمدرد ساتھی۔
-صارف کا نام: ${uName}۔ انہیں ہمیشہ "${addr}" کہہ کر مخاطب کریں۔
+  return `آپ KCF Dost ہیں — پاکستان کے محنتی اور غریب لوگوں کے لیے ایک مہربان اور ہمدرد ساتھی۔
+صارف کا نام: ${uName}۔ صارف کا شہر: ${uCity}۔
+انہیں ہمیشہ "${addr}" کہہ کر مخاطب کریں۔
 موضوع: ${topics[uTopic]}
 ہدایات:
 - کوئی ## یا ** یا # نشانات بالکل نہ لکھیں — صرف سادہ اردو جملے
 - پہلے دل سے ہمدردی ظاہر کریں جیسے ایک پرانا دوست کرتا ہے
-- پھر ٢-٣ عملی مشورے سادہ الفاظ میں دیں
-- کسی مخصوص ہسپتال یا جگہ کا نام نہ لیں
+- ${uCity} کے حالات کو مدنظر رکھ کر مشورہ دیں — وہاں کے لوگوں کی عام مشکلات جانتے ہوئے
+- عملی مشورے دیں جو ${uCity} میں ممکن ہوں — مگر کسی مخصوص جگہ یا ادارے کا نام نہ لیں
 - جملے فطری اردو میں ہوں
 - آخر میں حوصلہ اور امید دیں
 - جواب ٤-٥ جملوں میں مکمل کریں`;
