@@ -4,163 +4,418 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rizwan's AI Agency — Karachi & UAE</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0a0f1e;--bg2:#0d1528;--bg3:#111c35;--card:#0f1a30;--card2:#13203a;--border:#1e2d4a;--border2:#243452;--accent:#4f8ef7;--accent2:#6ba3f9;--green:#22c55e;--gold:#f0b429;--text:#e8edf5;--text2:#8899b4;--text3:#5a6d8a;--white:#ffffff}
+:root{
+  --bg:#0e1422;
+  --bg2:#111827;
+  --card:#141e2e;
+  --card2:#1a2438;
+  --border:#1f2d42;
+  --border2:#263548;
+  --accent:#5b8dee;
+  --accent2:#7ba4f5;
+  --silver:#8899b4;
+  --silver2:#b0c0d8;
+  --text:#d8e4f0;
+  --text2:#8899b4;
+  --text3:#4a5a72;
+  --white:#ffffff;
+  --green:#22c55e;
+  --gold:#e8a020;
+}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-.topbar{background:linear-gradient(90deg,#0d1528,#162040,#0d1528);border-bottom:1px solid var(--border);text-align:center;padding:9px;font-size:11px;letter-spacing:3px;color:var(--text2);direction:ltr}
-.hero{padding:80px 24px 60px;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,rgba(79,142,247,0.08) 0%,transparent 70%)}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* TOPBAR */
+.topbar{background:rgba(14,20,34,0.95);border-bottom:1px solid var(--border);text-align:center;padding:9px;font-size:11px;letter-spacing:3px;color:var(--text3);direction:ltr;backdrop-filter:blur(10px)}
+
+/* HERO */
+.hero{padding:60px 24px 50px;position:relative;overflow:hidden;background:linear-gradient(135deg,#0e1422 0%,#111827 50%,#0f1a2e 100%)}
 .hero::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(79,142,247,0.1);border:1px solid rgba(79,142,247,0.2);border-radius:20px;padding:6px 16px;font-size:11px;letter-spacing:2px;color:var(--accent2);margin-bottom:24px;direction:ltr}
-.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.hero-title{font-size:52px;font-weight:700;color:var(--white);line-height:1.1;margin-bottom:8px;direction:ltr}
-.hero-title span{background:linear-gradient(135deg,var(--accent),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-name{font-size:16px;color:var(--text2);margin-bottom:6px;font-family:'Noto Nastaliq Urdu',serif}
-.hero-loc{font-size:13px;color:var(--text3);margin-bottom:48px;direction:ltr}
-.hero-stats{display:flex;justify-content:center;align-items:center;gap:0;max-width:500px;margin:0 auto;background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden}
-.stat{flex:1;padding:20px 16px;text-align:center}
-.stat+.stat{border-right:1px solid var(--border)}
-.stat-num{font-size:32px;font-weight:700;color:var(--white);direction:ltr;line-height:1}
-.stat-num span{color:var(--accent)}
-.stat-lbl{font-size:10px;color:var(--text3);margin-top:6px;letter-spacing:1px;direction:ltr}
+.hero::after{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(ellipse at 80% 40%,rgba(91,141,238,0.06) 0%,transparent 60%)}
+
+/* Network dots pattern */
+.hero-dots{position:absolute;top:0;right:0;width:45%;height:100%;opacity:0.4;direction:ltr}
+.hero-dots svg{width:100%;height:100%}
+
+.hero-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;position:relative;z-index:2}
+.hero-left{direction:ltr}
+.hero-eyebrow{font-size:11px;letter-spacing:3px;color:var(--accent2);margin-bottom:16px;font-weight:600}
+.hero-title{font-size:44px;font-weight:800;color:var(--white);line-height:1.1;margin-bottom:10px}
+.hero-title span{color:var(--accent2)}
+.hero-name{font-size:15px;color:var(--silver);margin-bottom:6px;font-family:'Noto Nastaliq Urdu',serif;direction:rtl}
+.hero-loc{font-size:13px;color:var(--text3);margin-bottom:32px}
+.hero-stats{display:flex;gap:32px}
+.stat{text-align:center}
+.stat-num{font-size:28px;font-weight:700;color:var(--white);line-height:1}
+.stat-num span{color:var(--accent2)}
+.stat-lbl{font-size:10px;color:var(--text3);margin-top:4px;letter-spacing:1px}
+
+/* AI Badge */
+.hero-right{display:flex;justify-content:center;align-items:center;position:relative}
+.ai-badge-wrap{position:relative;width:220px;height:220px}
+.ai-badge{width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,#1a2a4a,#0e1a30);border:2px solid var(--border2);display:flex;flex-direction:column;align-items:center;justify-content:center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);box-shadow:0 0 40px rgba(91,141,238,0.15)}
+.ai-badge-text{font-size:32px;font-weight:800;color:var(--white);direction:ltr}
+.ai-badge-sub{font-size:9px;letter-spacing:2px;color:var(--accent2);margin-top:4px;direction:ltr}
+.ai-ring{position:absolute;top:50%;left:50%;border-radius:50%;border:1px solid rgba(91,141,238,0.2);transform:translate(-50%,-50%)}
+.ai-ring-1{width:170px;height:170px}
+.ai-ring-2{width:200px;height:200px;border-color:rgba(91,141,238,0.1)}
+.ai-ring-3{width:220px;height:220px;border-color:rgba(91,141,238,0.06)}
+
+/* CONTAINER */
 .container{max-width:1000px;margin:0 auto;padding:0 24px}
-.section{padding:60px 0}
+
+/* SECTION */
+.section{padding:50px 0}
 .sec-eye{font-size:10px;letter-spacing:3px;color:var(--accent);font-weight:600;direction:ltr;margin-bottom:10px}
-.sec-title{font-size:26px;font-weight:700;color:var(--white);margin-bottom:32px;font-family:'Noto Nastaliq Urdu',serif}
+.sec-title{font-size:22px;font-weight:700;color:var(--white);margin-bottom:28px;direction:ltr}
 .divider{height:1px;background:linear-gradient(90deg,transparent,var(--border2),transparent)}
-.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--border);border-radius:16px;overflow:hidden}
-.svc{background:var(--card);padding:28px 24px;transition:background 0.2s}
+
+/* SERVICES */
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.svc{background:var(--card);padding:24px 20px;transition:background 0.2s;direction:ltr}
 .svc:hover{background:var(--card2)}
-.svc-icon{width:44px;height:44px;border-radius:10px;background:rgba(79,142,247,0.1);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px}
-.svc-name{font-size:15px;font-weight:600;color:var(--white);margin-bottom:6px;direction:ltr}
-.svc-desc{font-size:12px;color:var(--text2);line-height:1.6;font-family:'Noto Nastaliq Urdu',serif}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:24px}
-.prod{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;cursor:pointer;transition:all 0.25s;position:relative;overflow:hidden}
-.prod::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),#a78bfa);opacity:0;transition:opacity 0.25s}
-.prod:hover{border-color:var(--border2);background:var(--card2);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
-.prod:hover::before,.prod.active::before{opacity:1}
-.prod.active{border-color:var(--accent);background:var(--card2)}
-.prod-head{display:flex;align-items:center;gap:14px;margin-bottom:14px;direction:ltr}
-.prod-icon{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
-.prod-icon.ph{background:linear-gradient(135deg,rgba(34,197,94,0.15),rgba(34,197,94,0.05));border:1px solid rgba(34,197,94,0.2)}
-.prod-icon.ur{background:linear-gradient(135deg,rgba(167,139,250,0.15),rgba(167,139,250,0.05));border:1px solid rgba(167,139,250,0.2)}
-.prod-icon.js{background:linear-gradient(135deg,rgba(240,180,41,0.15),rgba(240,180,41,0.05));border:1px solid rgba(240,180,41,0.2)}
-.prod-icon.kc{background:linear-gradient(135deg,rgba(34,197,94,0.15),rgba(79,142,247,0.05));border:1px solid rgba(34,197,94,0.2)}
-.prod-name{font-size:17px;font-weight:700;color:var(--white)}
-.prod-badge{font-size:9px;letter-spacing:1.5px;color:var(--accent2);background:rgba(79,142,247,0.1);padding:3px 8px;border-radius:20px;display:inline-block;margin-top:4px;direction:ltr;font-weight:600}
-.prod-desc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:14px;font-family:'Noto Nastaliq Urdu',serif}
-.prod-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
-.ptag{font-size:10px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.04);color:var(--text3);border:1px solid var(--border);direction:ltr;font-weight:500}
-.demo-btn{width:100%;padding:11px;border-radius:10px;border:1px solid var(--border2);background:transparent;color:var(--accent);font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;transition:all 0.2s}
-.demo-btn:hover{background:rgba(79,142,247,0.1);border-color:var(--accent)}
-.demo{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;margin-top:16px;display:none}
+.svc-img{width:64px;height:64px;object-fit:contain;margin-bottom:14px;filter:drop-shadow(0 4px 8px rgba(91,141,238,0.2))}
+.svc-name{font-size:14px;font-weight:600;color:var(--white);margin-bottom:6px}
+.svc-desc{font-size:12px;color:var(--text2);line-height:1.6;font-family:'Noto Nastaliq Urdu',serif;direction:rtl}
+
+/* CASE STUDIES */
+.cases-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.case-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color 0.2s}
+.case-card:hover{border-color:var(--border2)}
+.case-img{width:100%;height:130px;object-fit:cover;background:linear-gradient(135deg,#1a2a4a,#0e1a30);display:flex;align-items:center;justify-content:center;font-size:48px}
+.case-body{padding:18px}
+.case-label{font-size:10px;letter-spacing:2px;color:var(--accent2);margin-bottom:8px;direction:ltr;font-weight:600}
+.case-title{font-size:15px;font-weight:700;color:var(--white);margin-bottom:8px;direction:ltr}
+.case-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:14px;direction:ltr}
+.case-btn{padding:8px 16px;border-radius:8px;border:1px solid var(--border2);background:transparent;color:var(--accent2);font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s;direction:ltr;font-weight:500}
+.case-btn:hover{background:rgba(91,141,238,0.1);border-color:var(--accent)}
+
+/* Testimonial */
+.testimonial{background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:16px;margin-top:12px}
+.test-text{font-size:13px;color:var(--text);line-height:1.7;direction:ltr;font-style:italic;margin-bottom:8px}
+.test-sign{font-size:11px;color:var(--accent2);direction:ltr;font-weight:600}
+
+/* Tech Partners */
+.tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.tech-item{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--card2);border-radius:8px;border:1px solid var(--border);direction:ltr}
+.tech-icon{font-size:18px}
+.tech-name{font-size:12px;color:var(--text2);font-weight:500}
+
+/* PROCESS */
+.process-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:24px}
+.process-line{position:absolute;top:28px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--accent),#a78bfa);opacity:0.4;direction:ltr}
+.process-step{text-align:center;position:relative;direction:ltr}
+.step-icon{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--card2),var(--bg));border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:22px;position:relative;z-index:1}
+.step-num{font-size:10px;font-weight:700;color:var(--accent2);letter-spacing:1px;margin-bottom:6px}
+.step-title{font-size:13px;font-weight:700;color:var(--white);margin-bottom:6px}
+.step-desc{font-size:11px;color:var(--text2);line-height:1.5;padding:0 8px}
+.arrow{position:absolute;top:22px;right:-12px;color:var(--accent2);font-size:16px;z-index:2}
+
+/* PRODUCTS */
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+.prod{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:all 0.25s;direction:ltr}
+.prod:hover,.prod.active{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 30px rgba(91,141,238,0.12)}
+.prod-img{width:100%;height:110px;background:linear-gradient(135deg,#1a2a4a,#0e1622);display:flex;align-items:center;justify-content:center;font-size:40px;position:relative;overflow:hidden}
+.prod-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(to top,var(--card),transparent)}
+.prod-body{padding:16px}
+.prod-name{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px}
+.prod-badge{font-size:9px;letter-spacing:1.5px;color:var(--accent2);background:rgba(91,141,238,0.1);padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:10px;font-weight:600}
+.prod-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:12px;font-family:'Noto Nastaliq Urdu',serif;direction:rtl}
+.prod-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
+.ptag{font-size:10px;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,0.04);color:var(--text3);border:1px solid var(--border)}
+.demo-btn{width:100%;padding:9px;border-radius:8px;border:1px solid var(--border2);background:transparent;color:var(--accent);font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;transition:all 0.2s}
+.demo-btn:hover{background:rgba(91,141,238,0.1)}
+
+/* DEMO */
+.demo{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-top:16px;display:none}
 .demo.show{display:block}
-.demo-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.demo-ttl{font-size:17px;font-weight:700;color:var(--white);direction:ltr}
-.demo-close{background:rgba(255,255,255,0.05);border:1px solid var(--border);cursor:pointer;color:var(--text2);font-size:18px;padding:4px 12px;border-radius:8px;line-height:1.4}
-.qrow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-.qbtn{padding:7px 14px;border-radius:20px;border:1px solid var(--border2);background:rgba(79,142,247,0.06);color:var(--accent2);font-size:12px;cursor:pointer;font-family:'Noto Nastaliq Urdu',serif;transition:all 0.15s;font-weight:600}
-.qbtn:hover{background:rgba(79,142,247,0.15);border-color:var(--accent)}
-.chatbox{background:rgba(0,0,0,0.2);border-radius:12px;padding:14px;min-height:200px;max-height:280px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;margin-bottom:14px;border:1px solid var(--border)}
-.bub{padding:12px 16px;border-radius:14px;font-size:14px;line-height:1.8;max-width:88%}
+.demo-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.demo-ttl{font-size:16px;font-weight:700;color:var(--white);direction:ltr}
+.demo-close{background:rgba(255,255,255,0.05);border:1px solid var(--border);cursor:pointer;color:var(--text2);font-size:16px;padding:4px 10px;border-radius:6px;line-height:1.4}
+.qrow{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+.qbtn{padding:6px 12px;border-radius:16px;border:1px solid var(--border2);background:rgba(91,141,238,0.06);color:var(--accent2);font-size:12px;cursor:pointer;font-family:'Noto Nastaliq Urdu',serif;transition:all 0.15s}
+.qbtn:hover{background:rgba(91,141,238,0.15)}
+.chatbox{background:rgba(0,0,0,0.2);border-radius:10px;padding:12px;min-height:180px;max-height:260px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;margin-bottom:12px;border:1px solid var(--border)}
+.bub{padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.8;max-width:88%}
 .bub.ai{background:var(--card2);color:var(--text);align-self:flex-start;border:1px solid var(--border2);border-bottom-left-radius:4px;font-family:'Noto Nastaliq Urdu',serif}
-.bub.user{background:linear-gradient(135deg,rgba(79,142,247,0.3),rgba(79,142,247,0.15));color:var(--white);align-self:flex-end;border-bottom-right-radius:4px;border:1px solid rgba(79,142,247,0.3);direction:rtl;font-family:'Noto Nastaliq Urdu',serif}
-.bub.typing{background:var(--card2);color:var(--text3);font-style:italic;align-self:flex-start;border:1px solid var(--border);direction:ltr;font-family:'Inter',sans-serif;font-size:13px}
-.inrow{display:flex;gap:10px}
-.msgin{flex:1;padding:12px 18px;border:1px solid var(--border2);border-radius:12px;font-size:14px;font-family:'Noto Nastaliq Urdu',serif;color:var(--text);direction:rtl;outline:none;background:rgba(0,0,0,0.2);transition:border-color 0.2s}
+.bub.user{background:rgba(91,141,238,0.2);color:var(--white);align-self:flex-end;border-bottom-right-radius:4px;border:1px solid rgba(91,141,238,0.3);direction:rtl;font-family:'Noto Nastaliq Urdu',serif}
+.bub.typing{background:var(--card2);color:var(--text3);font-style:italic;align-self:flex-start;border:1px solid var(--border);direction:ltr;font-family:'Inter',sans-serif;font-size:12px}
+.inrow{display:flex;gap:8px}
+.msgin{flex:1;padding:10px 16px;border:1px solid var(--border2);border-radius:10px;font-size:13px;font-family:'Noto Nastaliq Urdu',serif;color:var(--text);direction:rtl;outline:none;background:rgba(0,0,0,0.2);transition:border-color 0.2s}
 .msgin:focus{border-color:var(--accent)}
 .msgin::placeholder{color:var(--text3)}
-.sndbtn{padding:12px 20px;background:linear-gradient(135deg,var(--accent),#6ba3f9);color:white;border:none;border-radius:12px;font-size:16px;cursor:pointer;flex-shrink:0}
-.contact-wrap{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px 32px}
-.contact-title{font-size:22px;font-weight:700;color:var(--white);margin-bottom:6px;font-family:'Noto Nastaliq Urdu',serif}
-.contact-sub{font-size:14px;color:var(--text2);margin-bottom:28px;font-family:'Noto Nastaliq Urdu',serif}
+.sndbtn{padding:10px 18px;background:linear-gradient(135deg,#3b6fd4,var(--accent));color:white;border:none;border-radius:10px;font-size:15px;cursor:pointer;flex-shrink:0}
+
+/* CONTACT */
+.contact-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px 32px}
+.contact-title{font-size:20px;font-weight:700;color:var(--white);margin-bottom:6px;font-family:'Noto Nastaliq Urdu',serif}
+.contact-sub{font-size:13px;color:var(--text2);margin-bottom:24px;font-family:'Noto Nastaliq Urdu',serif}
 .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;direction:ltr}
-.ccard{position:relative;overflow:hidden;border-radius:14px;min-height:190px}
+.ccard{position:relative;overflow:hidden;border-radius:12px;min-height:185px;border:1px solid var(--border)}
 .ccard iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-.ccard-content{position:relative;z-index:2;padding:18px;height:100%;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(to bottom,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.2) 50%,rgba(0,0,0,0.7) 100%)}
+.ccard-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,20,34,0.6) 0%,rgba(14,20,34,0.15) 40%,rgba(14,20,34,0.75) 100%);z-index:1}
+.ccard-content{position:absolute;inset:0;z-index:2;padding:16px;display:flex;flex-direction:column;justify-content:space-between}
 .ccard-top{display:flex;justify-content:space-between;align-items:center}
-.cbadge{font-size:11px;letter-spacing:2px;font-weight:700;padding:3px 10px;border-radius:20px}
-.cbadge.pk{color:#4ade80;background:rgba(34,197,94,0.2);border:1px solid rgba(74,222,128,0.3)}
-.cbadge.ae{color:#60a5fa;background:rgba(59,130,246,0.2);border:1px solid rgba(96,165,250,0.3)}
-.ccountry{font-size:15px;font-weight:700;color:#fff;margin-bottom:2px;text-shadow:0 1px 4px rgba(0,0,0,0.8)}
-.cnum{font-size:13px;margin-bottom:12px;text-shadow:0 1px 4px rgba(0,0,0,0.8)}
+.cbadge{font-size:10px;letter-spacing:2px;font-weight:700;padding:3px 9px;border-radius:20px}
+.cbadge.pk{color:#4ade80;background:rgba(34,197,94,0.2);border:1px solid rgba(74,222,128,0.25)}
+.cbadge.ae{color:#60a5fa;background:rgba(59,130,246,0.2);border:1px solid rgba(96,165,250,0.25)}
+.ccountry{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px;text-shadow:0 1px 6px rgba(0,0,0,0.9)}
+.cnum{font-size:12px;margin-bottom:10px;text-shadow:0 1px 6px rgba(0,0,0,0.9);font-weight:600}
 .cnum.pk{color:#4ade80}
 .cnum.ae{color:#60a5fa}
-.wabtn{display:block;text-align:center;padding:10px;color:white;border-radius:10px;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:'Inter',sans-serif;width:100%;direction:ltr;letter-spacing:0.5px;transition:opacity 0.2s}
-.wabtn:hover{opacity:0.88}
+.wabtn{display:block;text-align:center;padding:9px;color:white;border-radius:8px;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'Inter',sans-serif;width:100%;direction:ltr;letter-spacing:0.5px;transition:opacity 0.2s}
+.wabtn:hover{opacity:0.85}
 .wabtn.grn{background:linear-gradient(135deg,#16a34a,#22c55e)}
 .wabtn.blu{background:linear-gradient(135deg,#1d4ed8,#3b82f6)}
-.footer{text-align:center;padding:24px;border-top:1px solid var(--border)}
-.footer-txt{font-size:12px;color:var(--text3);direction:ltr}
+
+/* FOOTER */
+.footer{text-align:center;padding:24px;border-top:1px solid var(--border);direction:ltr}
+.footer-txt{font-size:12px;color:var(--text3)}
+.footer-links{display:flex;justify-content:center;gap:16px;margin-top:12px}
+.footer-link{width:32px;height:32px;border-radius:8px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;transition:border-color 0.2s}
+.footer-link:hover{border-color:var(--accent)}
+
 .chatbox::-webkit-scrollbar{width:4px}
 .chatbox::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
-@media(max-width:640px){.hero-title{font-size:34px}.cgrid{grid-template-columns:1fr}.contact-wrap{padding:24px 20px}}
+
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-title{font-size:32px}
+  .services{grid-template-columns:repeat(2,1fr)}
+  .cases-grid{grid-template-columns:1fr}
+  .process-steps{grid-template-columns:repeat(2,1fr)}
+  .process-line{display:none}
+  .products{grid-template-columns:1fr}
+  .cgrid{grid-template-columns:1fr}
+  .contact-wrap{padding:24px 16px}
+}
 </style>
 </head>
 <body>
+
 <div class="topbar">RIZWAN'S AI AGENCY &nbsp;—&nbsp; KARACHI & UAE</div>
+
+<!-- HERO -->
 <div class="hero">
-  <div class="container">
-    <div class="hero-badge">DIGITAL AI SOLUTIONS</div>
-    <div class="hero-title">Rizwan's <span>AI</span> Agency</div>
-    <div class="hero-name" style="font-family:'Noto Nastaliq Urdu',serif">سید رضوان احمد</div>
-    <div class="hero-loc">📍 Karachi, Pakistan &nbsp;·&nbsp; 🇦🇪 UAE</div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">5<span>+</span></div><div class="stat-lbl">CLIENTS</div></div>
-      <div class="stat"><div class="stat-num">2</div><div class="stat-lbl">COUNTRIES</div></div>
-      <div class="stat"><div class="stat-num">4<span>+</span></div><div class="stat-lbl">AI PRODUCTS</div></div>
+  <div class="hero-dots">
+    <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" direction="ltr">
+      <defs><radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#5b8dee" stop-opacity="0.6"/><stop offset="100%" stop-color="#5b8dee" stop-opacity="0"/></radialGradient></defs>
+      <g opacity="0.6">
+        <circle cx="100" cy="80" r="2" fill="#5b8dee"/><circle cx="200" cy="40" r="1.5" fill="#7ba4f5"/><circle cx="320" cy="90" r="2" fill="#5b8dee"/><circle cx="420" cy="60" r="1.5" fill="#7ba4f5"/><circle cx="150" cy="160" r="1.5" fill="#5b8dee"/><circle cx="280" cy="140" r="2" fill="#7ba4f5"/><circle cx="380" cy="180" r="1.5" fill="#5b8dee"/><circle cx="460" cy="120" r="2" fill="#7ba4f5"/><circle cx="80" cy="240" r="1.5" fill="#5b8dee"/><circle cx="220" cy="220" r="2" fill="#7ba4f5"/><circle cx="340" cy="260" r="1.5" fill="#5b8dee"/><circle cx="440" cy="240" r="2" fill="#7ba4f5"/><circle cx="120" cy="320" r="2" fill="#5b8dee"/><circle cx="260" cy="300" r="1.5" fill="#7ba4f5"/><circle cx="400" cy="340" r="2" fill="#5b8dee"/>
+        <line x1="100" y1="80" x2="200" y2="40" stroke="#5b8dee" stroke-width="0.5" opacity="0.4"/>
+        <line x1="200" y1="40" x2="320" y2="90" stroke="#5b8dee" stroke-width="0.5" opacity="0.4"/>
+        <line x1="320" y1="90" x2="420" y2="60" stroke="#7ba4f5" stroke-width="0.5" opacity="0.4"/>
+        <line x1="150" y1="160" x2="280" y2="140" stroke="#5b8dee" stroke-width="0.5" opacity="0.4"/>
+        <line x1="280" y1="140" x2="380" y2="180" stroke="#7ba4f5" stroke-width="0.5" opacity="0.4"/>
+        <line x1="200" y1="40" x2="150" y2="160" stroke="#5b8dee" stroke-width="0.5" opacity="0.3"/>
+        <line x1="320" y1="90" x2="280" y2="140" stroke="#7ba4f5" stroke-width="0.5" opacity="0.3"/>
+        <line x1="380" y1="180" x2="340" y2="260" stroke="#5b8dee" stroke-width="0.5" opacity="0.3"/>
+        <line x1="220" y1="220" x2="340" y2="260" stroke="#7ba4f5" stroke-width="0.5" opacity="0.4"/>
+        <line x1="80" y1="240" x2="220" y2="220" stroke="#5b8dee" stroke-width="0.5" opacity="0.4"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-inner container">
+    <div class="hero-left">
+      <div class="hero-eyebrow">DIGITAL AI SOLUTIONS</div>
+      <div class="hero-title">Rizwan's <span>AI</span> Agency</div>
+      <div class="hero-name">سید رضوان احمد</div>
+      <div class="hero-loc">📍 Karachi, Pakistan &nbsp;·&nbsp; 🇦🇪 UAE</div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">5<span>+</span></div><div class="stat-lbl">CLIENTS</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-lbl">COUNTRIES</div></div>
+        <div class="stat"><div class="stat-num">4<span>+</span></div><div class="stat-lbl">PRODUCTS</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="ai-badge-wrap">
+        <div class="ai-ring ai-ring-1"></div>
+        <div class="ai-ring ai-ring-2"></div>
+        <div class="ai-ring ai-ring-3"></div>
+        <div class="ai-badge">
+          <div class="ai-badge-text">AI</div>
+          <div class="ai-badge-sub">AGENCY</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
 <div class="container">
+
+  <!-- SERVICES -->
   <div class="section">
     <div class="sec-eye">WHAT WE OFFER</div>
-    <div class="sec-title">ہماری خدمات</div>
+    <div class="sec-title">Our Services</div>
     <div class="services">
-      <div class="svc"><div class="svc-icon">🤖</div><div class="svc-name">AI Chatbots</div><div class="svc-desc">کاروبار کے لیے اردو AI چیٹ بوٹس</div></div>
-      <div class="svc"><div class="svc-icon">🎬</div><div class="svc-name">AI Video</div><div class="svc-desc">Google Flow سے پروفیشنل ویڈیوز</div></div>
-      <div class="svc"><div class="svc-icon">🎓</div><div class="svc-name">AI Training</div><div class="svc-desc">اردو میں AI سیکھنے کے ٹولز</div></div>
-      <div class="svc"><div class="svc-icon">🌐</div><div class="svc-name">AI Web Tools</div><div class="svc-desc">ویب سائٹ پر AI انٹیگریشن</div></div>
+      <div class="svc">
+        <div style="font-size:40px;margin-bottom:12px">🌐</div>
+        <div class="svc-name">AI Web Tools</div>
+        <div class="svc-desc">ویب سائٹ پر AI انٹیگریشن</div>
+      </div>
+      <div class="svc">
+        <div style="font-size:40px;margin-bottom:12px">📚</div>
+        <div class="svc-name">AI Training</div>
+        <div class="svc-desc">اردو میں AI سیکھنے کے ٹولز</div>
+      </div>
+      <div class="svc">
+        <div style="font-size:40px;margin-bottom:12px">🎬</div>
+        <div class="svc-name">AI Video</div>
+        <div class="svc-desc">Google Flow سے پروفیشنل ویڈیوز</div>
+      </div>
+      <div class="svc">
+        <div style="font-size:40px;margin-bottom:12px">🤖</div>
+        <div class="svc-name">AI Chatbots</div>
+        <div class="svc-desc">کاروبار کے لیے اردو AI چیٹ بوٹس</div>
+      </div>
     </div>
   </div>
+
   <div class="divider"></div>
+
+  <!-- CASE STUDIES -->
   <div class="section">
-    <div class="sec-eye">LIVE DEMOS</div>
-    <div class="sec-title">ہمارے AI پروڈکٹس</div>
-    <div class="products">
-      <div class="prod" id="card-pharmacy" onclick="openDemo('pharmacy')">
-        <div class="prod-head"><div class="prod-icon ph">💊</div><div><div class="prod-name">Pharmacy AI</div><div class="prod-badge">HEALTHCARE</div></div></div>
-        <div class="prod-desc">دوائی کی معلومات اور اسٹاک چیک — اردو میں</div>
-        <div class="prod-tags"><span class="ptag">Urdu</span><span class="ptag">Healthcare</span><span class="ptag">Chatbot</span></div>
-        <button class="demo-btn">▶ Live Demo چلائیں</button>
+    <div class="sec-eye">AGENCY CASE STUDIES & CLIENTS</div>
+    <div class="sec-title">Our Work</div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-img">🤖</div>
+        <div class="case-body">
+          <div class="case-label">FEATURED CASE STUDY</div>
+          <div class="case-title">JRSY AI Integration</div>
+          <div class="case-desc">Implemented custom AI Style Assistant for JRSY clothing brand with UAE B2B module. Reduced customer queries by 60% with automated WhatsApp ordering.</div>
+          <button class="case-btn" onclick="openDemo('jrsy')">View Live Demo →</button>
+        </div>
       </div>
-      <div class="prod" id="card-urdu" onclick="openDemo('urdu')">
-        <div class="prod-head"><div class="prod-icon ur">🎓</div><div><div class="prod-name">AI Learning</div><div class="prod-badge">EDUCATION</div></div></div>
-        <div class="prod-desc">بالغوں کے لیے اردو میں AI تعلیمی پلیٹ فارم</div>
-        <div class="prod-tags"><span class="ptag">Education</span><span class="ptag">Urdu AI</span><span class="ptag">Quiz</span></div>
-        <button class="demo-btn">▶ Live Demo چلائیں</button>
+      <div class="case-card">
+        <div class="case-img">🎓</div>
+        <div class="case-body">
+          <div class="case-label">AI LEARNING TOOL</div>
+          <div class="case-title">Urdu AI Education Platform</div>
+          <div class="case-desc">بالغوں کے لیے اردو میں AI تعلیمی پلیٹ فارم</div>
+          <div class="testimonial">
+            <div class="test-text">"Rizwan's agency transformed our learning platform. The Urdu AI voice is a game-changer!"</div>
+            <div class="test-sign">(signed: Al-Futtaim Education Group)</div>
+          </div>
+        </div>
       </div>
-      <div class="prod" id="card-jrsy" onclick="openDemo('jrsy')">
-        <div class="prod-head"><div class="prod-icon js">👔</div><div><div class="prod-name">JRSY Style AI</div><div class="prod-badge">FASHION</div></div></div>
-        <div class="prod-desc">کپڑوں کی پسند — AI اسٹائل مشیر + UAE B2B</div>
-        <div class="prod-tags"><span class="ptag">Fashion</span><span class="ptag">B2B UAE</span><span class="ptag">WhatsApp</span></div>
-        <button class="demo-btn">▶ Live Demo چلائیں</button>
-      </div>
-      <div class="prod" id="card-kcf" onclick="openDemo('kcf')">
-        <div class="prod-head"><div class="prod-icon kc">💚</div><div><div class="prod-name">KCF Dost</div><div class="prod-badge">COMMUNITY</div></div></div>
-        <div class="prod-desc">دکھی دلوں کے لیے — پیسہ، صحت، پڑھائی، رشتے</div>
-        <div class="prod-tags"><span class="ptag">Welfare</span><span class="ptag">Urdu</span><span class="ptag">Community</span></div>
-        <button class="demo-btn">▶ Live Demo چلائیں</button>
+      <div class="case-card">
+        <div class="case-img">💊</div>
+        <div class="case-body">
+          <div class="case-label">TECHNOLOGY PARTNERS</div>
+          <div class="case-title">Pharmacy AI</div>
+          <div class="case-desc">دوائی کی معلومات اور اسٹاک چیک — اردو میں</div>
+          <div class="tech-grid">
+            <div class="tech-item"><div class="tech-icon">🤖</div><div class="tech-name">Claude AI</div></div>
+            <div class="tech-item"><div class="tech-icon">🎬</div><div class="tech-name">Google Flow</div></div>
+            <div class="tech-item"><div class="tech-icon">🔷</div><div class="tech-name">Azure AI</div></div>
+            <div class="tech-item"><div class="tech-icon">🤗</div><div class="tech-name">Hugging Face</div></div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PROCESS -->
+  <div class="section">
+    <div class="sec-eye">OUR AI DEVELOPMENT PROCESS</div>
+    <div class="process-wrap">
+      <div class="sec-title" style="margin-bottom:0">How We Build</div>
+      <div class="process-steps">
+        <div class="process-line"></div>
+        <div class="process-step">
+          <div class="step-icon">💡</div>
+          <div class="arrow">›</div>
+          <div class="step-num">01</div>
+          <div class="step-title">Discovery & Strategy</div>
+          <div class="step-desc">Understanding your goals, defining AI scope, and data assessment.</div>
+        </div>
+        <div class="process-step">
+          <div class="step-icon">⚙️</div>
+          <div class="arrow">›</div>
+          <div class="step-num">02</div>
+          <div class="step-title">Data & Training</div>
+          <div class="step-desc">Securing relevant data, developing and training models.</div>
+        </div>
+        <div class="process-step">
+          <div class="step-icon">💻</div>
+          <div class="arrow">›</div>
+          <div class="step-num">03</div>
+          <div class="step-title">Custom Development</div>
+          <div class="step-desc">Building and integrating the AI tools into your workflows.</div>
+        </div>
+        <div class="process-step">
+          <div class="step-icon">🚀</div>
+          <div class="step-num">04</div>
+          <div class="step-title">Testing & Deployment</div>
+          <div class="step-desc">Rigorous validation, then smooth deployment with full support.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PRODUCTS -->
+  <div class="section">
+    <div class="sec-eye">LIVE DEMOS</div>
+    <div class="sec-title">Our AI Products</div>
+    <div class="products">
+      <div class="prod" id="card-pharmacy" onclick="openDemo('pharmacy')">
+        <div class="prod-img">💊</div>
+        <div class="prod-body">
+          <div class="prod-name">Pharmacy AI</div>
+          <div class="prod-badge">HEALTHCARE</div>
+          <div class="prod-desc">دوائی کی معلومات اور اسٹاک چیک — اردو میں</div>
+          <div class="prod-tags"><span class="ptag">Urdu</span><span class="ptag">Healthcare</span><span class="ptag">Chatbot</span></div>
+          <button class="demo-btn">▶ Live Demo</button>
+        </div>
+      </div>
+      <div class="prod" id="card-urdu" onclick="openDemo('urdu')">
+        <div class="prod-img">🎓</div>
+        <div class="prod-body">
+          <div class="prod-name">AI Learning</div>
+          <div class="prod-badge">EDUCATION</div>
+          <div class="prod-desc">بالغوں کے لیے اردو میں AI تعلیمی پلیٹ فارم</div>
+          <div class="prod-tags"><span class="ptag">Education</span><span class="ptag">Urdu AI</span><span class="ptag">Quiz</span></div>
+          <button class="demo-btn">▶ Live Demo</button>
+        </div>
+      </div>
+      <div class="prod" id="card-jrsy" onclick="openDemo('jrsy')">
+        <div class="prod-img">👔</div>
+        <div class="prod-body">
+          <div class="prod-name">JRSY Style AI</div>
+          <div class="prod-badge">FASHION</div>
+          <div class="prod-desc">کپڑوں کی پسند — AI اسٹائل مشیر + UAE B2B</div>
+          <div class="prod-tags"><span class="ptag">Fashion</span><span class="ptag">B2B UAE</span><span class="ptag">WhatsApp</span></div>
+          <button class="demo-btn">▶ Live Demo</button>
+        </div>
+      </div>
+      <div class="prod" id="card-kcf" onclick="openDemo('kcf')">
+        <div class="prod-img">💚</div>
+        <div class="prod-body">
+          <div class="prod-name">KCF Dost</div>
+          <div class="prod-badge">COMMUNITY</div>
+          <div class="prod-desc">دکھی دلوں کے لیے — پیسہ، صحت، پڑھائی، رشتے</div>
+          <div class="prod-tags"><span class="ptag">Welfare</span><span class="ptag">Urdu</span><span class="ptag">Community</span></div>
+          <button class="demo-btn">▶ Live Demo</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEMOS -->
     <div class="demo" id="demo-pharmacy">
       <div class="demo-hdr"><div class="demo-ttl">💊 Pharmacy AI</div><button class="demo-close" onclick="closeDemo()">✕</button></div>
       <div class="qrow">
         <button class="qbtn" onclick="ask('pharmacy','Panadol کے بارے میں بتائیں')">Panadol</button>
-        <button class="qbtn" onclick="ask('pharmacy','Augmentin دستیاب ہے؟')">اسٹاک چیک</button>
+        <button class="qbtn" onclick="ask('pharmacy','Augmentin دستیاب ہے؟')">اسٹاک</button>
         <button class="qbtn" onclick="ask('pharmacy','بخار کی دوائی؟')">بخار</button>
         <button class="qbtn" onclick="ask('pharmacy','بچوں کی کھانسی؟')">بچے</button>
       </div>
@@ -192,14 +447,17 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
       <div class="qrow">
         <button class="qbtn" onclick="ask('kcf','نوکری نہیں مل رہی')">نوکری</button>
         <button class="qbtn" onclick="ask('kcf','گھر چلانا مشکل ہے')">پیسہ</button>
-        <button class="qbtn" onclick="ask('kcf','بچے کی پڑھائی کا مسئلہ ہے')">پڑھائی</button>
+        <button class="qbtn" onclick="ask('kcf','بچے کی پڑھائی کا مسئلہ')">پڑھائی</button>
         <button class="qbtn" onclick="ask('kcf','صحت خراب ہے پیسے نہیں')">صحت</button>
       </div>
       <div class="chatbox" id="chat-kcf"><div class="bub ai">السلام علیکم! 💚 یہاں آپ کی بات سنی جائے گی۔</div></div>
       <div class="inrow"><input class="msgin" id="inp-kcf" placeholder="اپنا مسئلہ لکھیں..."/><button class="sndbtn" onclick="send('kcf')">↑</button></div>
     </div>
   </div>
+
   <div class="divider"></div>
+
+  <!-- CONTACT -->
   <div class="section">
     <div class="sec-eye">CONTACT US</div>
     <div class="contact-wrap">
@@ -207,9 +465,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
       <div class="contact-sub">سید رضوان احمد سے آج ہی رابطہ کریں — مفت مشاورت دستیاب ہے</div>
       <div class="cgrid">
         <div class="ccard">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d925453!2d66.5!3d25.1!2m3!1f0!2f0!3f0!3m2!1i800!2i400!4f13.1!3m3!1m2!1s0x3eb33e06651d4bbf%3A0x9cf92f44555a0c23!2sKarachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d925453!2d66.5!3d25.1!2m3!1f0!2f0!3f0!3m2!1i800!2i400!4f13.1!3m3!1m2!1s0x3eb33e06651d4bbf%3A0x9cf92f44555a0c23!2sKarachi!5e0!3m2!1sen!2s!4v1" loading="lazy"></iframe>
+          <div class="ccard-overlay"></div>
           <div class="ccard-content">
-            <div class="ccard-top"><div style="font-size:26px">🇵🇰</div><div class="cbadge pk">PK</div></div>
+            <div class="ccard-top"><div style="font-size:24px">🇵🇰</div><div class="cbadge pk">PK</div></div>
             <div>
               <div class="ccountry">Karachi, Pakistan</div>
               <div class="cnum pk">+92 334 133 1972</div>
@@ -218,9 +477,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
           </div>
         </div>
         <div class="ccard">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462456!2d55.1!3d25.0!2m3!1f0!2f0!3f0!3m2!1i800!2i400!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%2C%20UAE!5e0!3m2!1sen!2s!4v1" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462456!2d55.1!3d25.0!2m3!1f0!2f0!3f0!3m2!1i800!2i400!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai!5e0!3m2!1sen!2s!4v1" loading="lazy"></iframe>
+          <div class="ccard-overlay"></div>
           <div class="ccard-content">
-            <div class="ccard-top"><div style="font-size:26px">🇦🇪</div><div class="cbadge ae">AE</div></div>
+            <div class="ccard-top"><div style="font-size:24px">🇦🇪</div><div class="cbadge ae">AE</div></div>
             <div>
               <div class="ccountry">UAE Office</div>
               <div class="cnum ae">+971 54 527 1033</div>
@@ -231,14 +491,24 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
       </div>
     </div>
   </div>
+
 </div>
-<div class="footer"><div class="footer-txt">© 2025 Rizwan's AI Agency — Syed Rizwan Ahmed | Karachi & UAE</div></div>
+
+<div class="footer">
+  <div class="footer-txt">© 2025 Rizwan's AI Agency — Syed Rizwan Ahmed | Karachi & UAE</div>
+  <div class="footer-links">
+    <div class="footer-link">in</div>
+    <div class="footer-link">gh</div>
+    <div class="footer-link">▶</div>
+  </div>
+</div>
+
 <script>
 const SYS={
   pharmacy:'آپ ایک فارمیسی کے مددگار ہیں۔ صرف سادہ اردو جملوں میں جواب دیں۔ کوئی ## یا ** نشانات نہ لکھیں۔ Panadol، Brufen، Augmentin، ORS، Septran دستیاب ہیں۔ آخر میں ڈاکٹر سے مشورے کی بات کریں۔',
   urdu:'آپ ایک AI استاد ہیں۔ صرف سادہ اردو جملوں میں AI کے بارے میں سمجھائیں۔ کوئی ## یا ** نشانات نہ لکھیں۔ جواب مختصر اور آسان رکھیں۔',
   jrsy:'آپ JRSY کپڑوں کی دکان کے مددگار ہیں۔ صرف سادہ اردو جملوں میں اسٹائل کے مشورے دیں۔ آرڈر کے لیے: Karachi +923341331972، UAE +971545271033',
-  kcf:'آپ KCF Dost ہیں — ایک مہربان اور ہمدرد ساتھی۔ صرف سادہ اردو جملوں میں بات کریں — کوئی ## یا ** نشانات نہ لکھیں۔ پہلے دل سے ہمدردی ظاہر کریں، پھر ٢-٣ عملی مشورے دیں۔ کسی مخصوص جگہ کا نام نہ لیں۔ ہمیشہ امید اور حوصلہ دیں۔'
+  kcf:'آپ KCF Dost ہیں — ایک مہربان ساتھی۔ صرف سادہ اردو جملوں میں بات کریں — کوئی ## یا ** نشانات نہ لکھیں۔ پہلے ہمدردی ظاہر کریں، پھر عملی مشورے دیں۔ ہمیشہ امید دیں۔'
 };
 const H={pharmacy:[],urdu:[],jrsy:[],kcf:[]};
 function openDemo(id){
