@@ -459,62 +459,139 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
   <div class="divider"></div>
 
   <!-- TOOLS -->
+  <style>
+    .glass-tool{position:relative;border-radius:20px;overflow:hidden;background:rgba(15,20,30,0.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.08);transition:all 0.35s ease}
+    .glass-tool::before{content:'';position:absolute;inset:0;border-radius:20px;padding:1px;background:linear-gradient(135deg,rgba(240,180,41,0.5),rgba(255,255,255,0.05),rgba(0,229,255,0.4));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+    .glass-tool.cyan::before{background:linear-gradient(135deg,rgba(0,229,255,0.55),rgba(255,255,255,0.05),rgba(167,139,250,0.4))}
+    .glass-tool:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.45),0 0 30px rgba(240,180,41,0.12)}
+    .glass-tool.cyan:hover{box-shadow:0 20px 50px rgba(0,0,0,0.45),0 0 30px rgba(0,229,255,0.15)}
+    .glass-tool-head{position:relative;padding:30px 24px 22px;text-align:center;background:radial-gradient(ellipse at top,rgba(240,180,41,0.12),transparent 70%)}
+    .glass-tool.cyan .glass-tool-head{background:radial-gradient(ellipse at top,rgba(0,229,255,0.12),transparent 70%)}
+    .glass-tool-head::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent,rgba(240,180,41,0.5),transparent)}
+    .glass-tool.cyan .glass-tool-head::after{background:linear-gradient(90deg,transparent,rgba(0,229,255,0.5),transparent)}
+    .glass-icon-orb{width:64px;height:64px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:28px;background:linear-gradient(135deg,rgba(240,180,41,0.18),rgba(240,180,41,0.04));border:1px solid rgba(240,180,41,0.35);box-shadow:0 0 25px rgba(240,180,41,0.2),inset 0 0 15px rgba(240,180,41,0.1)}
+    .glass-tool.cyan .glass-icon-orb{background:linear-gradient(135deg,rgba(0,229,255,0.18),rgba(0,229,255,0.04));border:1px solid rgba(0,229,255,0.35);box-shadow:0 0 25px rgba(0,229,255,0.2),inset 0 0 15px rgba(0,229,255,0.1)}
+    .glass-title{font-size:18px;font-weight:800;color:#fff;letter-spacing:0.3px;margin-bottom:6px;text-shadow:0 0 20px rgba(240,180,41,0.3)}
+    .glass-tool.cyan .glass-title{text-shadow:0 0 20px rgba(0,229,255,0.3)}
+    .glass-byline{font-size:10px;letter-spacing:2.5px;font-weight:700;background:linear-gradient(90deg,#f0b429,#ffd97a,#f0b429);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .glass-tool.cyan .glass-byline{background:linear-gradient(90deg,#00e5ff,#7df9ff,#00e5ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .glass-body{padding:22px 24px 24px}
+    .glass-desc{font-size:13px;color:rgba(220,225,235,0.75);line-height:1.8;margin-bottom:16px;direction:rtl;font-family:'Noto Nastaliq Urdu',serif}
+    .glass-input-note{display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(200,205,220,0.5);margin-bottom:16px;direction:ltr;letter-spacing:0.3px}
+    .glass-input{width:100%;padding:12px 16px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;font-size:13px;font-family:'Inter',sans-serif;color:#fff;background:rgba(0,0,0,0.25);margin-bottom:10px;outline:none;direction:ltr;transition:border-color 0.2s,box-shadow 0.2s}
+    .glass-input:focus{border-color:rgba(240,180,41,0.6);box-shadow:0 0 0 3px rgba(240,180,41,0.1)}
+    .glass-tool.cyan .glass-input:focus{border-color:rgba(0,229,255,0.6);box-shadow:0 0 0 3px rgba(0,229,255,0.1)}
+    .glass-textarea{width:100%;padding:12px 16px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;font-size:13px;font-family:'Noto Nastaliq Urdu',serif;color:#fff;background:rgba(0,0,0,0.25);margin-bottom:14px;outline:none;direction:rtl;resize:none;height:84px;transition:border-color 0.2s,box-shadow 0.2s}
+    .glass-textarea:focus{border-color:rgba(0,229,255,0.6);box-shadow:0 0 0 3px rgba(0,229,255,0.1)}
+    .glass-btn{width:100%;padding:13px;border-radius:12px;border:none;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:700;letter-spacing:0.5px;color:#0a0f1e;background:linear-gradient(135deg,#f0b429,#ffd97a);box-shadow:0 4px 20px rgba(240,180,41,0.35);transition:all 0.25s}
+    .glass-btn:hover{box-shadow:0 6px 28px rgba(240,180,41,0.5);transform:translateY(-1px)}
+    .glass-btn.cyan-btn{color:#0a0f1e;background:linear-gradient(135deg,#00e5ff,#7df9ff);box-shadow:0 4px 20px rgba(0,229,255,0.35)}
+    .glass-btn.cyan-btn:hover{box-shadow:0 6px 28px rgba(0,229,255,0.5)}
+    .glass-result{display:none;margin-top:16px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px;font-size:12px;color:#d8e4f0;line-height:1.8;max-height:500px;overflow-y:auto;font-family:'Courier New',monospace;direction:ltr;white-space:pre-wrap}
+    .glass-result::-webkit-scrollbar{width:5px}
+    .glass-result::-webkit-scrollbar-thumb{background:rgba(240,180,41,0.4);border-radius:3px}
+    .glass-limit{display:none;margin-top:16px;text-align:center;padding:18px;background:rgba(240,180,41,0.06);border:1px solid rgba(240,180,41,0.25);border-radius:12px;backdrop-filter:blur(8px)}
+    .glass-limit-text{font-size:13px;color:#ffd97a;margin-bottom:12px;font-family:'Noto Nastaliq Urdu',serif}
+    .glass-wa-btn{padding:10px 22px;background:#25D366;color:white;border:none;border-radius:10px;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:700;box-shadow:0 4px 16px rgba(37,211,102,0.35)}
+    @media(max-width:768px){.tools-grid{grid-template-columns:1fr !important}}
+
+    /* Medical Report Analyzer - Teal/Purple theme */
+    .glass-tool.medical::before{background:linear-gradient(135deg,rgba(20,184,166,0.55),rgba(255,255,255,0.05),rgba(167,139,250,0.45))}
+    .glass-tool.medical:hover{box-shadow:0 20px 50px rgba(0,0,0,0.45),0 0 30px rgba(20,184,166,0.15)}
+    .glass-tool.medical .glass-tool-head{background:radial-gradient(ellipse at top,rgba(20,184,166,0.14),transparent 70%)}
+    .glass-tool.medical .glass-tool-head::after{background:linear-gradient(90deg,transparent,rgba(20,184,166,0.5),transparent)}
+    .glass-tool.medical .glass-icon-orb{background:linear-gradient(135deg,rgba(20,184,166,0.18),rgba(167,139,250,0.08));border:1px solid rgba(20,184,166,0.4);box-shadow:0 0 25px rgba(20,184,166,0.22),inset 0 0 15px rgba(20,184,166,0.1)}
+    .glass-tool.medical .glass-title{text-shadow:0 0 20px rgba(20,184,166,0.35)}
+    .glass-tool.medical .glass-byline{background:linear-gradient(90deg,#14b8a6,#5eead4,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    .upload-zone{border:2px dashed rgba(20,184,166,0.35);border-radius:14px;padding:28px 16px;text-align:center;cursor:pointer;transition:all 0.25s;background:rgba(20,184,166,0.04);margin-bottom:14px}
+    .upload-zone:hover{border-color:rgba(20,184,166,0.6);background:rgba(20,184,166,0.08)}
+    .upload-zone.has-file{border-color:rgba(34,197,94,0.5);background:rgba(34,197,94,0.06)}
+    .upload-icon{font-size:32px;margin-bottom:8px;opacity:0.8}
+    .upload-text{font-size:13px;color:rgba(220,225,235,0.7);direction:rtl;font-family:'Noto Nastaliq Urdu',serif;line-height:1.6}
+    .upload-filename{font-size:11px;color:#5eead4;margin-top:6px;direction:ltr;word-break:break-all}
+    .glass-btn.medical-btn{color:#0a0f1e;background:linear-gradient(135deg,#14b8a6,#5eead4);box-shadow:0 4px 20px rgba(20,184,166,0.35)}
+    .glass-btn.medical-btn:hover{box-shadow:0 6px 28px rgba(20,184,166,0.5)}
+    .glass-btn.medical-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+    .glass-limit.medical-limit{background:rgba(20,184,166,0.06);border-color:rgba(20,184,166,0.25)}
+    .glass-limit-text.medical-text{color:#5eead4}
+    .trial-badge{display:inline-block;font-size:10px;letter-spacing:1px;color:#5eead4;background:rgba(20,184,166,0.1);border:1px solid rgba(20,184,166,0.25);padding:3px 10px;border-radius:20px;margin-bottom:12px;direction:ltr;font-weight:600}
+    .medical-result{direction:rtl;font-family:'Noto Nastaliq Urdu',serif !important;text-align:right;font-size:13px !important;line-height:2 !important}
+  </style>
+
   <div class="section">
     <div class="sec-eye">OUR EXCLUSIVE TOOLS</div>
     <div class="sec-title">Professional AI Tools</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;direction:ltr">
+    <div class="tools-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;direction:ltr">
 
       <!-- Tool 1: Commercial Director Pro -->
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.25s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-        <div style="background:linear-gradient(135deg,#1a2a4a,#0e1622);padding:28px 24px 20px;text-align:center;position:relative;overflow:hidden">
-          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#5b8dee,#a78bfa)"></div>
-          <div style="font-size:40px;margin-bottom:10px">🎬</div>
-          <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:4px">Commercial Director Pro</div>
-          <div style="font-size:11px;letter-spacing:2px;color:var(--accent2);font-weight:600">BY SYED RIZWAN AHMED</div>
+      <div class="glass-tool">
+        <div class="glass-tool-head">
+          <div class="glass-icon-orb">🎬</div>
+          <div class="glass-title">Commercial Director Pro</div>
+          <div class="glass-byline">BY SYED RIZWAN AHMED</div>
         </div>
-        <div style="padding:20px 24px">
-          <div style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;direction:rtl;font-family:Noto Nastaliq Urdu,serif">
-            TV اشتہار اور کمرشل کے لیے — ایجنسی جیسا سوچیں، فلم اسٹوڈیو جیسا بنائیں
-          </div>
-          <div style="font-size:12px;color:var(--text3);margin-bottom:16px;direction:ltr">
-            📌 Input: Brand name + Product + Model image (optional)
-          </div>
+        <div class="glass-body">
+          <div class="glass-desc">TV اشتہار اور کمرشل کے لیے — ایجنسی جیسا سوچیں، فلم اسٹوڈیو جیسا بنائیں</div>
+          <div class="glass-input-note">📌 Input: Brand name + Product + Model image (optional)</div>
           <div id="tool1-area">
-            <input id="t1-brand" style="width:100%;padding:9px 14px;border:1px solid var(--border2);border-radius:8px;font-size:13px;font-family:Inter,sans-serif;color:var(--text);background:rgba(0,0,0,0.2);margin-bottom:8px;outline:none;direction:ltr" placeholder="Brand name (e.g. ABABEEL Paint)"/>
-            <input id="t1-product" style="width:100%;padding:9px 14px;border:1px solid var(--border2);border-radius:8px;font-size:13px;font-family:Inter,sans-serif;color:var(--text);background:rgba(0,0,0,0.2);margin-bottom:12px;outline:none;direction:ltr" placeholder="Product (e.g. Premium Wall Paint)"/>
-            <button id="t1-btn" onclick="runTool1()" style="width:100%;padding:11px;border-radius:10px;background:linear-gradient(135deg,#3b6fd4,#5b8dee);color:white;border:none;font-size:14px;cursor:pointer;font-family:Inter,sans-serif;font-weight:700;letter-spacing:0.5px">🎬 Generate Commercial Script</button>
+            <input id="t1-brand" class="glass-input" placeholder="Brand name (e.g. ABABEEL Paint)"/>
+            <input id="t1-product" class="glass-input" placeholder="Product (e.g. Premium Wall Paint)"/>
+            <button id="t1-btn" class="glass-btn" onclick="runTool1()">🎬 Generate Commercial Script</button>
           </div>
-          <div id="tool1-result" style="display:none;margin-top:14px;background:rgba(0,0,0,0.2);border:1px solid var(--border2);border-radius:10px;padding:14px;font-size:13px;color:var(--text);line-height:1.8;max-height:500px;overflow-y:auto;font-family:monospace;direction:ltr;white-space:pre-wrap;font-size:12px"></div>
-          <div id="tool1-limit" style="display:none;margin-top:14px;text-align:center;padding:14px;background:rgba(240,180,41,0.08);border:1px solid rgba(240,180,41,0.2);border-radius:10px">
-            <div style="font-size:13px;color:var(--gold);margin-bottom:10px;font-family:Noto Nastaliq Urdu,serif">آپ کا مفت ٹرائل مکمل ہوا! مزید کے لیے رابطہ کریں</div>
-            <button onclick="window.open('https://wa.me/923341331972?text='+encodeURIComponent('السلام علیکم! Commercial Director Pro کا full access چاہیے'),'_blank')" style="padding:9px 20px;background:#25D366;color:white;border:none;border-radius:8px;font-size:13px;cursor:pointer;font-family:Inter,sans-serif;font-weight:700">💬 WhatsApp for Full Access</button>
+          <div id="tool1-result" class="glass-result"></div>
+          <div id="tool1-limit" class="glass-limit">
+            <div class="glass-limit-text">آپ کا مفت ٹرائل مکمل ہوا! مزید کے لیے رابطہ کریں</div>
+            <button class="glass-wa-btn" onclick="window.open('https://wa.me/923341331972?text='+encodeURIComponent('السلام علیکم! Commercial Director Pro کا full access چاہیے'),'_blank')">💬 WhatsApp for Full Access</button>
           </div>
         </div>
       </div>
 
       <!-- Tool 2: Director's Cut -->
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.25s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-        <div style="background:linear-gradient(135deg,#2a1a3a,#1a0e28);padding:28px 24px 20px;text-align:center;position:relative;overflow:hidden">
-          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#a78bfa,#f0b429)"></div>
-          <div style="font-size:40px;margin-bottom:10px">🎭</div>
-          <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:4px">Director's Cut</div>
-          <div style="font-size:11px;letter-spacing:2px;color:#c4a0fa;font-weight:600">BY SYED RIZWAN AHMED</div>
+      <div class="glass-tool cyan">
+        <div class="glass-tool-head">
+          <div class="glass-icon-orb">🎭</div>
+          <div class="glass-title">Director's Cut</div>
+          <div class="glass-byline">BY SYED RIZWAN AHMED</div>
         </div>
-        <div style="padding:20px 24px">
-          <div style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;direction:rtl;font-family:Noto Nastaliq Urdu,serif">
-            فلم اور ڈرامہ کے سین کے لیے — چند مکالمے یا مختصر کہانی دیں، مکمل سین تیار ہو
-          </div>
-          <div style="font-size:12px;color:var(--text3);margin-bottom:16px;direction:ltr">
-            📌 Input: Few dialogues or short story idea
-          </div>
+        <div class="glass-body">
+          <div class="glass-desc">فلم اور ڈرامہ کے سین کے لیے — چند مکالمے یا مختصر کہانی دیں، مکمل سین تیار ہو</div>
+          <div class="glass-input-note">📌 Input: Few dialogues or short story idea</div>
           <div id="tool2-area">
-            <textarea id="t2-story" style="width:100%;padding:9px 14px;border:1px solid var(--border2);border-radius:8px;font-size:13px;font-family:Noto Nastaliq Urdu,serif;color:var(--text);background:rgba(0,0,0,0.2);margin-bottom:12px;outline:none;direction:rtl;resize:none;height:80px" placeholder="مکالمے یا کہانی لکھیں..."></textarea>
-            <button id="t2-btn" onclick="runTool2()" style="width:100%;padding:11px;border-radius:10px;background:linear-gradient(135deg,#6b21a8,#a78bfa);color:white;border:none;font-size:14px;cursor:pointer;font-family:Inter,sans-serif;font-weight:700;letter-spacing:0.5px">🎭 Generate Scene</button>
+            <textarea id="t2-story" class="glass-textarea" placeholder="مکالمے یا کہانی لکھیں..."></textarea>
+            <button id="t2-btn" class="glass-btn cyan-btn" onclick="runTool2()">🎭 Generate Scene</button>
           </div>
-          <div id="tool2-result" style="display:none;margin-top:14px;background:rgba(0,0,0,0.2);border:1px solid var(--border2);border-radius:10px;padding:14px;font-size:13px;color:var(--text);line-height:1.8;max-height:500px;overflow-y:auto;font-family:monospace;direction:ltr;white-space:pre-wrap;font-size:12px"></div>
-          <div id="tool2-limit" style="display:none;margin-top:14px;text-align:center;padding:14px;background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:10px">
-            <div style="font-size:13px;color:#c4a0fa;margin-bottom:10px;font-family:Noto Nastaliq Urdu,serif">آپ کا مفت ٹرائل مکمل ہوا! مزید کے لیے رابطہ کریں</div>
-            <button onclick="window.open('https://wa.me/923341331972?text='+encodeURIComponent('السلام علیکم! Directors Cut tool ka full access chahiye'),'_blank')" style="padding:9px 20px;background:#25D366;color:white;border:none;border-radius:8px;font-size:13px;cursor:pointer;font-family:Inter,sans-serif;font-weight:700">💬 WhatsApp for Full Access</button>
+          <div id="tool2-result" class="glass-result"></div>
+          <div id="tool2-limit" class="glass-limit">
+            <div class="glass-limit-text">آپ کا مفت ٹرائل مکمل ہوا! مزید کے لیے رابطہ کریں</div>
+            <button class="glass-wa-btn" onclick="window.open('https://wa.me/923341331972?text='+encodeURIComponent('السلام علیکم! Directors Cut tool ka full access chahiye'),'_blank')">💬 WhatsApp for Full Access</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tool 3: Medical Report Analyzer -->
+      <div class="glass-tool medical">
+        <div class="glass-tool-head">
+          <div class="glass-icon-orb">🩺</div>
+          <div class="glass-title">Medical Report Analyzer</div>
+          <div class="glass-byline">BY SYED RIZWAN AHMED</div>
+        </div>
+        <div class="glass-body">
+          <div class="glass-desc">میڈیکل رپورٹس (بلڈ ٹیسٹ، ایکسرے، سی ٹی اسکین) کو آسان اور سادہ اردو میں تبدیل کر کے تفصیلی تجزیہ فراہم کرتا ہے</div>
+          <div class="trial-badge">✨ 5 FREE ANALYSES</div>
+          <div id="tool3-area">
+            <div class="upload-zone" id="upload-zone" onclick="document.getElementById('t3-file').click()">
+              <div class="upload-icon">📋</div>
+              <div class="upload-text">رپورٹ کی تصویر یہاں اپلوڈ کریں<br><span style="font-size:11px;opacity:0.7">JPG, PNG (Max 8MB)</span></div>
+              <div class="upload-filename" id="upload-filename"></div>
+            </div>
+            <input type="file" id="t3-file" accept="image/jpeg,image/png,image/jpg" style="display:none" onchange="handleFileSelect(event)"/>
+            <button id="t3-btn" class="glass-btn medical-btn" onclick="runTool3()" disabled>🩺 تجزیہ کریں (Analyze Report)</button>
+          </div>
+          <div id="tool3-result" class="glass-result medical-result"></div>
+          <div id="tool3-limit" class="glass-limit medical-limit">
+            <div class="glass-limit-text medical-text">آپ کا مفت ٹرائل مکمل ہوا! مزید کے لیے رابطہ کریں</div>
+            <button class="glass-wa-btn" onclick="window.open('https://wa.me/923341331972?text='+encodeURIComponent('السلام علیکم! Medical Report Analyzer کا full access چاہیے'),'_blank')">💬 WhatsApp for Full Access</button>
           </div>
         </div>
       </div>
@@ -694,6 +771,70 @@ async function runTool2(){
     }
   }catch(e){alert('Network masla.');}
   btn.textContent='🎭 Generate Scene';btn.disabled=false;
+}
+
+// Medical Report Analyzer
+var t3Count = 0;
+var selectedFileBase64 = null;
+var selectedFileMediaType = null;
+
+function handleFileSelect(event){
+  var file = event.target.files[0];
+  if(!file) return;
+
+  if(file.size > 8*1024*1024){
+    alert('فائل کا سائز 8MB سے کم ہونا چاہیے۔');
+    return;
+  }
+
+  var reader = new FileReader();
+  reader.onload = function(e){
+    var result = e.target.result;
+    selectedFileBase64 = result.split(',')[1];
+    selectedFileMediaType = file.type;
+
+    document.getElementById('upload-zone').classList.add('has-file');
+    document.getElementById('upload-filename').textContent = '✅ ' + file.name;
+    document.getElementById('t3-btn').disabled = false;
+  };
+  reader.readAsDataURL(file);
+}
+
+async function runTool3(){
+  if(!selectedFileBase64){alert('پہلے رپورٹ کی تصویر اپلوڈ کریں!');return;}
+  if(t3Count>=5){
+    document.getElementById('tool3-area').style.display='none';
+    document.getElementById('tool3-limit').style.display='block';
+    return;
+  }
+  var btn=document.getElementById('t3-btn');
+  btn.textContent='⏳ تجزیہ ہو رہا ہے...';btn.disabled=true;
+  try{
+    var res=await fetch('/api/chat',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        tool:'medical',
+        system:'',
+        imageBase64:selectedFileBase64,
+        imageMediaType:selectedFileMediaType,
+        messages:[]
+      })
+    });
+    var data=await res.json();
+    var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:'Dobara koshish karein.';
+    reply=reply.replace(/#{1,6} */g,'').replace(/\*\*/g,'').replace(/\*/g,'').trim();
+    document.getElementById('tool3-result').style.display='block';
+    document.getElementById('tool3-result').textContent=reply;
+    t3Count++;
+    if(t3Count>=5){
+      setTimeout(function(){
+        document.getElementById('tool3-area').style.display='none';
+        document.getElementById('tool3-limit').style.display='block';
+      },3000);
+    }
+  }catch(e){alert('Network masla.');}
+  btn.textContent='🩺 تجزیہ کریں (Analyze Report)';btn.disabled=false;
 }
 </script>
 </body>
